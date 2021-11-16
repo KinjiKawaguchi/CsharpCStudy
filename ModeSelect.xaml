@@ -1,0 +1,17 @@
+﻿<Page x:Class="CStudy.ModeSelect"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CStudy"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Background="White"
+      Title="Page2">
+    <Grid>
+        <Button x:Name="Button_Navi_Story" Content="Story" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Button_Navi_ProgramingTIPS" Content="ProgramingTIPS" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Button_Navi_LoginRegister" Content="LoginRegister" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Button_Navi_Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Cursor="Hand"/>
+    </Grid>
+</Page>
