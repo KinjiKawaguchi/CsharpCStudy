@@ -25,7 +25,6 @@ namespace CStudy
     /// </summary>
     public partial class LoginRegister : Page
     {
-        //public LoginRegister() InitalizeComponent();を試す
         public LoginRegister()
         {
             InitializeComponent();//おまじない
@@ -72,9 +71,7 @@ namespace CStudy
             {
                 Path_Userdata = Path_Userdata + @"\password.CStudy";//passwordファイルへのアクセスパスを作成
                 StreamReader ReadPassword = new StreamReader(Path_Userdata, Encoding.GetEncoding("Shift_JIS"));//パスワードファイルパスと、入力形式をReadPasswordに定義
-                string Check_Password = "";//Check_Passwordに空白を初期値として定義
-                Check_Password = ReadPassword.ReadLine();//Check_Passwordに一行読み込んだ結果を代入
-                //string Check_Password = sr.ReadLine();を試す
+                string Check_Password = ReadPassword.ReadLine();//Cjeck_PassWordにパスワードを読み込んで代入。
                 if (Login_Password == Check_Password)//入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
                 {
                     var Page_ModeSelect = new ModeSelect();//モード選択画面をPage_ModeSelectに代入
@@ -98,14 +95,14 @@ namespace CStudy
                 if (Register_Password == Register_PasswordConfirm)//入力されたパスワードが一致していたら　真：↑　偽：↓」
                 {
                     string Path_Userdata = "data\\user\\" + Register_UserID;//ユーザディレクトリ作成用ファイルパスを定義
-                    //if(new DirectoryInfo(Path_Userdata).Exists) MessageBox.Show("すでに存在するUserIDです。");を試す
-                    if (System.IO.File.Exists(Path_Userdata)) MessageBox.Show("既に存在するUserIDです。");//すでにユーザディレクトリが存在していたら　偽：↓
+                    if (new DirectoryInfo(Path_Userdata).Exists) MessageBox.Show("すでに存在するUserIDです。");//すでにユーザディレクトリが存在していたら　偽：↓
                     else
                     {
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
                         Path_Userdata = Path_Userdata + ("\\password.CStudy");//パスワードファイルのパスを定義
+                        File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);//パスワードファイルにパスワードを保存
                         var Page_ModeSelect = new ModeSelect();//モード選択画面を定義
-                        NavigationService.Navigate(ModeSelect);//モード選択画面に遷移
+                        NavigationService.Navigate(Page_ModeSelect);//モード選択画面に遷移
                     }
                 }
                 else MessageBox.Show("パスワードが一致していません。");//パスワード不一致を表示
