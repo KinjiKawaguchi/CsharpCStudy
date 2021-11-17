@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CsharpCStudy
+namespace CStudy
 {
     /// <summary>
     /// ProgramingTIPS_TOC.xaml の相互作用ロジック

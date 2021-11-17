@@ -25,5 +25,10 @@ namespace CStudy
         {
             InitializeComponent();
         }
+
+        private void Button_Navi_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace CStudy
         private void LoginButton_Click(object sender, RoutedEventArgs e)//Loginボタンが押されたら
         {
             string Login_UserID = TextBox_Login_UserID.Text;//入力されたIDを変数に代入
-            string Login_Password = PasswordBox_Login_Password.Password.ToString();//入力されたパスワードを変数に代入
+            string Login_Password = PasswordBox_Login_Password.Password;//入力されたパスワードを変数に代入
             string Path_Userdata = @"./data\user\" + Login_UserID;//UserIDからデータベースの保存パスを作成
             if (new DirectoryInfo(Path_Userdata).Exists)
             {
@@ -47,7 +47,6 @@ namespace CStudy
                 }
                 if (Login_Password == Check_Password)
                 {
-                    MessageBox.Show("ログイン成功。");
                     var ModeSelect = new ModeSelect();
                     NavigationService.Navigate(ModeSelect);
                 }
@@ -84,7 +83,8 @@ namespace CStudy
                         Directory.CreateDirectory(Path_Userdata);
                         Path_Userdata = Path_Userdata + ("\\password.CStudy");
                         File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);
-                        MessageBox.Show("登録成功。ログインしてください。");
+                        var ModeSelect = new ModeSelect();
+                        NavigationService.Navigate(ModeSelect);
                     }
                 }
                 else
@@ -98,7 +98,40 @@ namespace CStudy
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
+        }
 
+
+        private void Botton_Select_Login_Click(object sender, RoutedEventArgs e)
+        {
+            Label_Login_UserID.Visibility = System.Windows.Visibility.Visible;
+            TextBox_Login_UserID.Visibility = System.Windows.Visibility.Visible;
+            Label_Login_Password.Visibility = System.Windows.Visibility.Visible;
+            PasswordBox_Login_Password.Visibility = System.Windows.Visibility.Visible;
+            Botton_Login.Visibility = System.Windows.Visibility.Visible;
+            Label_Register_UserID.Visibility = System.Windows.Visibility.Hidden;
+            TextBox_Register_UserID.Visibility = System.Windows.Visibility.Hidden;
+            Label_Register_Password.Visibility = System.Windows.Visibility.Hidden;
+            PasswordBox_Register_Password.Visibility = System.Windows.Visibility.Hidden;
+            Botton_Register.Visibility = System.Windows.Visibility.Hidden;
+            Label_Register_PasswordConfirm.Visibility = System.Windows.Visibility.Hidden;
+            PasswordBox_Register_PasswordConfirm.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void Botton_Select_Register_Click(object sender, RoutedEventArgs e)
+        {
+            Label_Login_UserID.Visibility = System.Windows.Visibility.Hidden;
+            TextBox_Login_UserID.Visibility = System.Windows.Visibility.Hidden;
+            Label_Login_Password.Visibility = System.Windows.Visibility.Hidden;
+            PasswordBox_Login_Password.Visibility = System.Windows.Visibility.Hidden;
+            Botton_Login.Visibility = System.Windows.Visibility.Hidden;
+            Label_Register_UserID.Visibility = System.Windows.Visibility.Visible;
+            TextBox_Register_UserID.Visibility = System.Windows.Visibility.Visible;
+            Label_Register_Password.Visibility = System.Windows.Visibility.Visible;
+            PasswordBox_Register_Password.Visibility = System.Windows.Visibility.Visible;
+            Label_Register_PasswordConfirm.Visibility= System.Windows.Visibility.Visible;
+            PasswordBox_Register_PasswordConfirm.Visibility = System.Windows.Visibility.Visible;
+            Botton_Register.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }
