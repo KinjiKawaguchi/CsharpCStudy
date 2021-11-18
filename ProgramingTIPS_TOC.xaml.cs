@@ -28,6 +28,13 @@ namespace CStudy
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var Page_ModeSelect = new ModeSelect();
+            NavigationService.Navigate(Page_ModeSelect);
         }
     }
 }

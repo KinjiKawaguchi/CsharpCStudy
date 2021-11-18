@@ -67,12 +67,12 @@ namespace CStudy
             string Login_UserID = TextBox_Login_UserID.Text;//入力されたIDを変数に代入
             string Login_Password = PasswordBox_Login_Password.Password;//入力されたパスワードを変数に代入
             string Path_Userdata = @"./data\user\" + Login_UserID;//UserIDからデータベースの保存パスを作成
-            if (new DirectoryInfo(Path_Userdata).Exists || Login_UserID == "admin")///ディレクトリデータ(ユーザデータ).存在するか　真：↑　偽：↓
+            if (new DirectoryInfo(Path_Userdata).Exists)///ディレクトリデータ(ユーザデータ).存在するか　真：↑　偽：↓
             {
                 Path_Userdata = Path_Userdata + @"\password.CStudy";//passwordファイルへのアクセスパスを作成
                 StreamReader ReadPassword = new StreamReader(Path_Userdata, Encoding.GetEncoding("Shift_JIS"));//パスワードファイルパスと、入力形式をReadPasswordに定義
                 string Check_Password = ReadPassword.ReadLine();//Cjeck_PassWordにパスワードを読み込んで代入。
-                if (Login_Password == Check_Password || Login_UserID == "admin")///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
+                if (Login_Password == Check_Password)///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
                 {
                     var Page_ModeSelect = new ModeSelect();//モード選択画面をPage_ModeSelectに代入
                     NavigationService.Navigate(Page_ModeSelect);//モード選択画面に遷移

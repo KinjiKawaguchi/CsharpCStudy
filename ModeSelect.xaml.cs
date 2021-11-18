@@ -33,7 +33,7 @@ namespace CStudy
             InitializeComponent();//おなじない
         }
         
-        private void Button_Navi_Story_Click(object sender, RoutedEventAtgs e)////ストーリーモードが選択されたら
+        private void Button_Navi_Story_Click(object sender, RoutedEventArgs e)////ストーリーモードが選択されたら
         {
             var Page_Story = new Story();//ストーリー画面を定義
             NavigationService.Navigate(Page_Story);//ストーリー画面に遷移
