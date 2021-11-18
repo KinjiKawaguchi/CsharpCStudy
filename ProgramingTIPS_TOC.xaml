@@ -9,6 +9,32 @@
       Background="White"
       Title="ProgramingTIPS_TOC">
     <Grid>
-        <Label FontSize="50">ProgramingTIPS_TOC</Label>
+        <DockPanel>
+            <Border DockPanel.Dock="top" BorderBrush="Black" Background="#ee82ee" BorderThickness="1" Margin="0,0,0,0">
+                <Label DockPanel.Dock="top" Content="目次" FontWeight="Bold"  FontSize="80" HorizontalAlignment="Left" Height="123" Margin="9,0,0,0" VerticalAlignment="Center" Width="554"/>
+            </Border>
+            <ScrollViewer Width="1916">
+                <StackPanel>
+                    <Button Content="Note 1　プログラムの形" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,20,0,0" Height="75" Width="950" Cursor="Hand" Click="Button_Click"/>
+                    <Button Content="Note 2　変数について" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 3　文字を表示する" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 4　四則演算" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 5　データ入力" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 6　条件分岐" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 7　配列の利用" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 8　文字列の表現" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 9　ポインタ" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 10　数列と関数" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 11　構造体とポインタ" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 12　ファイル処理" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 13　様々な関数" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 14　参照と格納" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 15　有効・生存期間" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950"/>
+                    <Button Content="Note 16　前処理系" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,20" Height="75" Width="950" Cursor="Hand"/>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+        <Label Content="見たいノートを&#xD;&#xA;選択しよう" FontSize="96" HorizontalAlignment="Left" Margin="141,441,0,0" VerticalAlignment="Top" Height="273" Width="537"/>
+        <Button Content="戻る" HorizontalAlignment="Left" Margin="10,972,0,0" VerticalAlignment="Top" Height="100" Width="250" FontSize="48" FontFamily="Arial Black"/>
     </Grid>
 </Page>

@@ -10,8 +10,8 @@
       Title="Page2">
     <Grid>
         <Button x:Name="Button_Navi_Story" Content="Story" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Button_Navi_ProgramingTIPS" Content="ProgramingTIPS" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Button_Navi_LoginRegister" Content="LoginRegister" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Button_Navi_ProgramingTIPS" Content="ProgramingTIPS" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Click="Button_Navi_ProgramingTIPS_Click"/>
+        <Button x:Name="Button_Navi_LoginRegister" Content="LoginRegister" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Click="Button_Navi_LoginRegister_Click" Cursor="Hand"/>
         <Button x:Name="Button_Navi_Exit" Content="Exit" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Navi_Exit_Click"/>
     </Grid>
 </Page>

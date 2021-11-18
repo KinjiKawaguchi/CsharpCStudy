@@ -30,5 +30,17 @@ namespace CStudy
         {
             Application.Current.Shutdown();
         }
+
+        private void Button_Navi_LoginRegister_Click(object sender, RoutedEventArgs e)
+        {
+            var Page_LoginRegister = new LoginRegister();//ログイン登録画面を定義
+            NavigationService.Navigate(Page_LoginRegister);//ログイン登録画面に遷移
+        }
+
+        private void Button_Navi_ProgramingTIPS_Click(object sender, RoutedEventArgs e)
+        {
+            var Page_ProgramingTIPS_TOC = new ProgramingTIPS_TOC();//プログラミングTIPS画面を定義
+            NavigationService.Navigate(Page_ProgramingTIPS_TOC);//プログラミングTIPS画面に遷移
+        }
     }
 }
