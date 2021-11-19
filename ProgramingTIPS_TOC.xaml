@@ -35,6 +35,6 @@
             </ScrollViewer>
         </DockPanel>
         <Label Content="見たいノートを&#xD;&#xA;選択しよう" FontSize="96" HorizontalAlignment="Left" Margin="141,441,0,0" VerticalAlignment="Top" Height="273" Width="537"/>
-        <Button Content="戻る" HorizontalAlignment="Left" Margin="10,972,0,0" VerticalAlignment="Top" Height="100" Width="250" FontSize="48" FontFamily="Arial Black"/>
+        <Button Content="戻る" HorizontalAlignment="Left" Margin="10,972,0,0" VerticalAlignment="Top" Height="100" Width="250" FontSize="48" FontFamily="Arial Black" Cursor="Hand" Click="Button_Click_1"/>
     </Grid>
 </Page>
