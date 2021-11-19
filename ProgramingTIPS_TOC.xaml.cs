@@ -25,9 +25,19 @@ namespace CStudy
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Navi_ProgramingTIPS_Content(object sender , RoutedEventArgs e)
         {
-
+            string NoteStr = ((Button)sender).Name.ToString();
+            NoteStr = NoteStr.Substring(NoteStr.IndexOf("_"));
+            string Path_Note = @"./data\note\" + NoteStr;
         }
+
+        private void Button_Navi_ModeSelect_Click(object sender, RoutedEventArgs e)
+        {
+            var Page_ModeSelect = new ModeSelect();
+            NavigationService.Navigate(Page_ModeSelect);
+        }
+
+
     }
 }

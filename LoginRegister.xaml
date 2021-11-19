@@ -12,7 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
-        <Image x:Name="Image_LoginRegister" Source="/wallpaperbetter.com_1920x1080.jpg" Stretch="Fill" Grid.RowSpan="2"/>
+        <Image Source="/wallpaperbetter.com_1920x1080 (1).jpg" Stretch="Fill"/>
         <Label x:Name="Label_LoginRegister_Title" Content="CStudy" HorizontalAlignment="Left" Margin="198,150,0,0" VerticalAlignment="Top" Height="112" Width="456" FontFamily="Arial Black" FontSize="72" FontWeight="Bold" FontStyle="Normal" AutomationProperties.IsColumnHeader="True" Background="#00000000" Foreground="#DDFFFFFF"/>
         <Button x:Name="Botton_Select_Login" Content="ログイン" HorizontalAlignment="Left" Margin="200,0,0,744" VerticalAlignment="Bottom" Width="284" Height="50" Click="Botton_Select_Login_Click" RenderTransformOrigin="0.486,0.562" Cursor="Hand" FontFamily="Arial Black" FontSize="24" Background="#FFBD62FF" BorderBrush="#FFBD62FF"/>
         <Button x:Name="Botton_Select_Register" Content="新しいアカウントを作成" HorizontalAlignment="Left" Margin="200,0,0,689" VerticalAlignment="Bottom" Width="284" Height="50" Click="Botton_Select_Register_Click" RenderTransformOrigin="0.486,0.562" Cursor="Hand" FontFamily="Arial Black" FontSize="24" Background="#FFBD62FF" BorderBrush="#FFBD62FF"/>
@@ -29,5 +29,6 @@
         <Label x:Name="Label_Register_PasswordConfirm" Content="PasswordConfirm" HorizontalAlignment="Left" Margin="753,420,0,0" VerticalAlignment="Top" Width="102" Height="26" Visibility="Hidden" Foreground="#DDFFFFFF"/>
         <PasswordBox x:Name="PasswordBox_Register_PasswordConfirm" Height="22" HorizontalAlignment="Left" Margin="858,424,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden" Foreground="#FFE600FF" CaretBrush="White" BorderBrush="#89FF0000"/>
         <Button x:Name="Botton_Register" Content="新規登録" HorizontalAlignment="Left" Margin="781,471,0,0" VerticalAlignment="Top" Width="286" Height="50" Click="RegisterButton_Click" Cursor="Hand" Visibility="Hidden"/>
+
     </Grid>
 </Page>
