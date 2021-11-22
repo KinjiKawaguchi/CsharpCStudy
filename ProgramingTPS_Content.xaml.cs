@@ -37,6 +37,7 @@ namespace CStudy
                 {
                     Label_ProgramingTIPS_Content.Content = Label_ProgramingTIPS_Content.Content + line;
                 }
+
             }
 
         }
