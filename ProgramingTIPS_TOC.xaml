@@ -15,22 +15,22 @@
             </Border>
             <ScrollViewer Width="1916">
                 <StackPanel>
-                    <Button x:Name="_1" Content="1　プログラムの形" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,20,0,0" Height="75" Width="950" Cursor="Hand" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_2" Content="2　変数について" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_3" Content="3　文字を表示する" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_4" Content="4　四則演算" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_5" Content="5　データ入力" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_6" Content="6　条件分岐" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_7" Content="7　配列の利用" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_8" Content="8　文字列の表現" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_9" Content="9　ポインタ" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_10" Content="10　数列と関数" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_11" Content="11　構造体とポインタ" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_12" Content="12　ファイル処理" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_13" Content="13　様々な関数" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_14" Content="14　参照と格納" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_15" Content="15　有効・生存期間" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content"/>
-                    <Button x:Name="_16" Content="16　前処理系" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,20" Height="75" Width="950" Cursor="Hand" Click="Button_Navi_ProgramingTIPS_Content"/>
+                    <Button x:Name="_1" Content="1　プログラムの形" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,20,0,0" Height="75" Width="950" Cursor="Hand" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_2" Content="2　変数について" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_3" Content="3　文字を表示する" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_4" Content="4　四則演算" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_5" Content="5　データ入力" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click" Cursor="Hand"/>
+                    <Button x:Name="_6" Content="6　条件分岐" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_7" Content="7　配列の利用" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_8" Content="8　文字列の表現" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_9" Content="9　ポインタ" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_10" Content="10　数列と関数" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_11" Content="11　構造体とポインタ" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_12" Content="12　ファイル処理" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click" Cursor="Hand"/>
+                    <Button x:Name="_13" Content="13　様々な関数" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_14" Content="14　参照と格納" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_15" Content="15　有効・生存期間" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,0" Height="75" Width="950" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
+                    <Button x:Name="_16" Content="16　前処理系" Background="#ee82ee" FontSize="50" HorizontalAlignment="Right" Margin="0,40,0,20" Height="75" Width="950" Cursor="Hand" Click="Button_Navi_ProgramingTIPS_Content_Click"/>
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>

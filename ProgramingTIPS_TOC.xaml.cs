@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace CStudy
 {
@@ -25,12 +26,17 @@ namespace CStudy
             InitializeComponent();
         }
 
-        public void Button_Navi_ProgramingTIPS_Content(object sender , RoutedEventArgs e)
+        public void Button_Navi_ProgramingTIPS_Content_Click(object sender , RoutedEventArgs e)
         {
             //string NoteStr = ((Button)sender).Name.ToString();
             //NoteStr = NoteStr.Substring(NoteStr.IndexOf("_"));
             //string Path_Note = @"./data\note\" + NoteStr;
-            string Path_ProgramingNote = @"./data\note\" + ((Button)sender).Name.ToString();
+            using (StreamReader File_Note = new StreamReader(@"./data\note\" + ((Button)sender).Name.ToString() + ".CStudy"))
+
+            {
+                Label
+            }
+                Console.WriteLine(Path_ProgramingNote);
             //-StreamReader ReadNote = new StreamREader(Path_ProgramingNote,Encoding.GetEncoding("Shift_JIS"));
             //-string Buf_Note=ReadNote.ReadLine();
             //-Label_ProgramingNote_Title.Text = ReadNote.ReadLine();
