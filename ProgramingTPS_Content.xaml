@@ -14,7 +14,7 @@
 
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="765" Margin="0,185,0,0" VerticalAlignment="Top" Width="1920">
-            <Label Content="本文" FontSize="28" HorizontalAlignment="Left" Height="254" Margin="9,9,0,0" VerticalAlignment="Top" Width="410"/>
+            <Label x:Name="Label_ProgramingTIPS_Content" Content="本文" FontSize="28" HorizontalAlignment="Center" Height="755" Margin="0,9,0,0" VerticalAlignment="Top" Width="1900"/>
 
         </Border>
         <Button x:Name="Button_Navi_Back" Content="前のノート" Background="#ee82ee" FontSize="40" HorizontalAlignment="Left" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand"/>
