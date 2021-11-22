@@ -27,9 +27,14 @@ namespace CStudy
 
         public void Button_Navi_ProgramingTIPS_Content(object sender , RoutedEventArgs e)
         {
-            string NoteStr = ((Button)sender).Name.ToString();
-            NoteStr = NoteStr.Substring(NoteStr.IndexOf("_"));
-            string Path_Note = @"./data\note\" + NoteStr;
+            //string NoteStr = ((Button)sender).Name.ToString();
+            //NoteStr = NoteStr.Substring(NoteStr.IndexOf("_"));
+            //string Path_Note = @"./data\note\" + NoteStr;
+            string Path_ProgramingNote = @"./data\note\" + ((Button)sender).Name.ToString();
+            //-StreamReader ReadNote = new StreamREader(Path_ProgramingNote,Encoding.GetEncoding("Shift_JIS"));
+            //-string Buf_Note=ReadNote.ReadLine();
+            //-Label_ProgramingNote_Title.Text = ReadNote.ReadLine();
+            //-Label_ProgramingNote_Content.Text = ReadNote.ReadAll();
         }
 
         private void Button_Navi_ModeSelect_Click(object sender, RoutedEventArgs e)
