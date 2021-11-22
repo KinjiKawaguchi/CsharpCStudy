@@ -28,15 +28,15 @@ namespace CStudy
 
         public void Button_Navi_ProgramingTIPS_Content_Click(object sender , RoutedEventArgs e)
         {
-            //string NoteStr = ((Button)sender).Name.ToString();
-            //NoteStr = NoteStr.Substring(NoteStr.IndexOf("_"));
-            //string Path_Note = @"./data\note\" + NoteStr;
-            using (StreamReader File_Note = new StreamReader(@"./data\note\" + ((Button)sender).Name.ToString() + ".CStudy"))
-
-            {
-                Label
-            }
-                Console.WriteLine(Path_ProgramingNote);
+            string Path_Which_Note_Open = (@"./data\ProgramingTIPS.CStudy");
+            if(new DirectoryInfo(Path_Which_Note_Open).Exists) File.Delete(Path_Which_Note_Open);
+            File.AppendAllText(Path_Which_Note_Open,((Button)sender).Name.ToString() + Environment.NewLine)
+            NavigationService.Navigate(new ProgramingTPS_Content());
+            //using (StreamReader File_Note = new StreamReader(@"./data\note\" + ((Button)sender).Name.ToString() + ".CStudy"))
+            //{
+            //    Label
+            //}
+            //    Console.WriteLine(Path_ProgramingNote);
             //-StreamReader ReadNote = new StreamREader(Path_ProgramingNote,Encoding.GetEncoding("Shift_JIS"));
             //-string Buf_Note=ReadNote.ReadLine();
             //-Label_ProgramingNote_Title.Text = ReadNote.ReadLine();
@@ -45,8 +45,7 @@ namespace CStudy
 
         private void Button_Navi_ModeSelect_Click(object sender, RoutedEventArgs e)
         {
-            var Page_ModeSelect = new ModeSelect();
-            NavigationService.Navigate(Page_ModeSelect);
+            NavigationService.Navigate(new ModeSelect());//モード選択画面へ遷移
         }
 
 
