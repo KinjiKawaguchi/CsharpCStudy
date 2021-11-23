@@ -28,8 +28,7 @@ namespace CStudy
 
         public void Button_Navi_ProgramingTIPS_Content_Click(object sender , RoutedEventArgs e)
         {
-            string Button_Name = ((Button)sender).Name.ToString();
-            NavigationService.Navigate(new ProgramingTIPS_Content(Button_Name));
+            NavigationService.Navigate(new ProgramingTIPS_Content(((Button)sender).Name.ToString()));
         }
 
         private void Button_Navi_ModeSelect_Click(object sender, RoutedEventArgs e)

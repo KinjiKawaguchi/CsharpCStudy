@@ -37,5 +37,10 @@ namespace CStudy
             //-}
 
         }
+
+        private void Button_Navi_TOC_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProgramingTIPS_TOC());
+        }
     }
 }
