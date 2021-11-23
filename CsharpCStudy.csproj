@@ -63,11 +63,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ProgramingTIPS_Content.xaml.cs">
+      <DependentUpon>ProgramingTIPS_Content.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProgramingTIPS_TOC.xaml.cs">
       <DependentUpon>ProgramingTIPS_TOC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramingTPS_Content.xaml.cs">
-      <DependentUpon>ProgramingTPS_Content.xaml</DependentUpon>
     </Compile>
     <Compile Include="Story.xaml.cs">
       <DependentUpon>Story.xaml</DependentUpon>
@@ -95,11 +95,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProgramingTIPS_TOC.xaml">
+    <Page Include="ProgramingTIPS_Content.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProgramingTPS_Content.xaml">
+    <Page Include="ProgramingTIPS_TOC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

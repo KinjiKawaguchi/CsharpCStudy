@@ -28,10 +28,11 @@ namespace CStudy
 
         public void Button_Navi_ProgramingTIPS_Content_Click(object sender , RoutedEventArgs e)
         {
-            string Path_Which_Note_Open = (@"./data\ProgramingTIPS.CStudy");
-            if(new DirectoryInfo(Path_Which_Note_Open).Exists) File.Delete(Path_Which_Note_Open);
-            File.AppendAllText(Path_Which_Note_Open, ((Button)sender).Name.ToString() + Environment.NewLine);
-            NavigationService.Navigate(new ProgramingTPS_Content());
+            //string Path_Which_Note_Open = (@"./data\ProgramingTIPS.CStudy");
+            //if(new DirectoryInfo(Path_Which_Note_Open).Exists) File.Delete(Path_Which_Note_Open);
+            //File.AppendAllText(Path_Which_Note_Open, ((Button)sender).Name.ToString() + Environment.NewLine);
+            string Button_Name = ((Button)sender).Name.ToString();
+            NavigationService.Navigate(new ProgramingTIPS_Content(Button_Name));
             //using (StreamReader File_Note = new StreamReader(@"./data\note\" + ((Button)sender).Name.ToString() + ".CStudy"))
             //{
             //    Label
