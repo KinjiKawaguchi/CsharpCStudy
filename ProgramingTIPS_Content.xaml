@@ -1,0 +1,25 @@
+﻿<Page x:Class="CStudy.ProgramingTIPS_Content"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CStudy"
+      mc:Ignorable="d"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Background="White"
+      Title="Page2">
+  <Grid>
+    <Border BorderBrush="Black" Background="#ee82ee"  BorderThickness="1" HorizontalAlignment="Center" Height="180" VerticalAlignment="Top" Width="1920">
+      <Label x:Name="Label_ProgramingTIPS_Title" Content="Programming notes" FontSize="80" HorizontalAlignment="Left" Height="180" Margin="9,0,0,0" VerticalAlignment="Center" Width="755"/>
+
+    </Border>
+    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="765" Margin="0,185,0,0" VerticalAlignment="Top" Width="1920">
+      <Label x:Name="Label_ProgramingTIPS_Content" Content="本文" FontSize="28" HorizontalAlignment="Center" Height="755" Margin="0,9,0,0" VerticalAlignment="Top" Width="1900"/>
+
+    </Border>
+    <Button x:Name="Button_Navi_Back" Content="前のノート" Background="#ee82ee" FontSize="40" HorizontalAlignment="Left" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand"/>
+    <Button x:Name="Button_Navi_TOC" Content="目次" Background="#ee82ee" FontSize="40" HorizontalAlignment="Center" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand"/>
+    <Button x:Name="Button_Navi_Next" Content="次のノート" Background="#ee82ee" FontSize="40" HorizontalAlignment="Left" Height="130" Margin="1596,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand"/>
+    <Label Content="１" FontSize="80" HorizontalAlignment="Left" Height="126" Margin="734,0,0,0" VerticalAlignment="Top" Width="161"/>
+  </Grid>
+</Page>
