@@ -35,20 +35,17 @@ namespace CStudy
         
         private void Button_Navi_Story_Click(object sender, RoutedEventArgs e)////ストーリーモードが選択されたら
         {
-            var Page_Story = new Story();//ストーリー画面を定義
-            NavigationService.Navigate(Page_Story);//ストーリー画面に遷移
+            NavigationService.Navigate(new Story());//ストーリー画面に遷移
         }
 
         private void Button_Navi_ProgramingTIPS_Click(object sender, RoutedEventArgs e)////ProgramingTIPSが選択されたら
         {
-            var Page_ProgramingTIPS_TOC = new ProgramingTIPS_TOC();//プログラミングTIPS画面を定義
-            NavigationService.Navigate(Page_ProgramingTIPS_TOC);//プログラミングTIPS画面に遷移
+            NavigationService.Navigate(new ProgramingTIPS_TOC());//プログラミングTIPS画面に遷移
         }
 
         private void Button_Navi_LoginRegister_Click(object sender, RoutedEventArgs e)////ログイン登録画面が選択されたら
         {
-            var Page_LoginRegister = new LoginRegister();//ログイン登録画面を定義
-            NavigationService.Navigate(Page_LoginRegister);//ログイン登録画面に遷移
+            NavigationService.Navigate(new LoginRegister());//ログイン登録画面に遷移
         }
 
         private void Button_Navi_Exit_Click(object sender, RoutedEventArgs e)////Exitが押されたら
