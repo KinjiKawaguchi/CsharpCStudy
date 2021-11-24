@@ -95,10 +95,5 @@ namespace CStudy
         {
             NavigationService.Navigate(new ProgramingTIPS_TOC());
         }
-
-        private void Button_Navi_Back_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
