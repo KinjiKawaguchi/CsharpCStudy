@@ -74,8 +74,7 @@ namespace CStudy
                 string Check_Password = ReadPassword.ReadLine();//Cjeck_PassWordにパスワードを読み込んで代入。
                 if (Login_Password == Check_Password)///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
                 {
-                    var Page_ModeSelect = new ModeSelect();//モード選択画面をPage_ModeSelectに代入
-                    NavigationService.Navigate(Page_ModeSelect);//モード選択画面に遷移
+                    NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                 }
                 else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
             }
@@ -101,8 +100,7 @@ namespace CStudy
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
                         Path_Userdata = Path_Userdata + ("\\password.CStudy");//パスワードファイルのパスを定義
                         File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);//パスワードファイルにパスワードを保存
-                        var Page_ModeSelect = new ModeSelect();//モード選択画面を定義
-                        NavigationService.Navigate(Page_ModeSelect);//モード選択画面に遷移
+                        NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
                 }
                 else MessageBox.Show("パスワードが一致していません。");//パスワード不一致を表示
