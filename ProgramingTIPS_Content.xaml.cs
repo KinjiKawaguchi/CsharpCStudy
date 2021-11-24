@@ -50,7 +50,7 @@ namespace CStudy
             {
                 NoteNum--;
                 Which_Note_Open = "_" + NoteNum;
-                ProgramingTIPS_Content(Which_Note_Open)
+                ProgramingTIPS_Content(Which_Note_Open);
             }
         }
         
@@ -67,7 +67,7 @@ namespace CStudy
             {
                 NoteNum++;
                 Which_Note_Open = "_" + NoteNum;
-                ProgramingTIPS_Content(Which_Note_Open)
+                ProgramingTIPS_Content(Which_Note_Open);
             }
         }
 
