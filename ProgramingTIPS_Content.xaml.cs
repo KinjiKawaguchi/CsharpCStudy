@@ -24,12 +24,12 @@ namespace CStudy
         public ProgramingTIPS_Content(string Which_Note_Open)
         {
             InitializeComponent();
-            Console.WriteLine(Which_Note_Open);
+            //-string Path_Note = @"./data\note\" + Which_Note_Open + ".CStudy"
             //-using (StreamReader File_Note = new StreamReader(Path_Note))
             //-{
             //-    Label_ProgramingTIPS_Title.Content = File_Note.ReadLine();
             //-    string line;
-                //-Label_ProgramingTIPS_Content.Content = line.ReadAll;
+                //-Label_ProgramingTIPS_Content.Content = line.ReadAll;これも試してみる
             //-    while ((line = File_Note.ReadLine()) != null) // 1行ずつ読み出し。
             //-    {
             //-        Label_ProgramingTIPS_Content.Content = Label_ProgramingTIPS_Content.Content + line;
