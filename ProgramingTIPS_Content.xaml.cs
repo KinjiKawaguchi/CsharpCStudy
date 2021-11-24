@@ -24,17 +24,17 @@ namespace CStudy
         public ProgramingTIPS_Content(string Which_Note_Open)
         {
             InitializeComponent();
-            //-string Path_Note = @"./data\note\" + Which_Note_Open + ".CStudy"
-            //-using (StreamReader File_Note = new StreamReader(Path_Note))
-            //-{
-            //-    Label_ProgramingTIPS_Title.Content = File_Note.ReadLine();
-            //-    string line;
-                //-Label_ProgramingTIPS_Content.Content = line.ReadAll;これも試してみる
-            //-    while ((line = File_Note.ReadLine()) != null) // 1行ずつ読み出し。
-            //-    {
-            //-        Label_ProgramingTIPS_Content.Content = Label_ProgramingTIPS_Content.Content + line;
-            //-    }
-            //-}
+            string Path_Note = @"./data\note\" + Which_Note_Oepen;//ノートのパスを設定1
+            string Path_Note_Title = PathNote + "_Title" + ".CStudy";//ノートのタイトルパスを設定
+            string Path_Note = Path_Note + ".CStudy";//ノートのファイルパス設定2
+            StreamReader Read_Title = new StreamReader(Path_Note_Title, Encoding.GetEncoding("Shift_JIS"));
+            string ProgramingTIPS_Title = Read_Title.ReadToEnd();
+            Label_ProgramingTIPS_Title.Content = ProgramingTIPS_Title;
+            Read_Title.Close();
+            StreamReader Read_Content = new StreamReader(Path_Note, Encoding.GetEncoding("Shift_JIS"));
+            string ProgramignTIPS_Content = Read_Content.ReadToEnd();
+            Label_ProgramingTIPS_Content.Content = ProgramingTIPS_Content
+            Read_Content.Close();
 
         }
 
