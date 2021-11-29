@@ -86,7 +86,7 @@ namespace CStudy
                 }
                 else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
             }
-            else MessageBox.Show("不正なログイン情報です。");
+            else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
         }
 
 

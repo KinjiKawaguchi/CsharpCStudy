@@ -8,19 +8,19 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Background="White"
       Title="Page2">
-  <Grid>
-    <Border BorderBrush="Black" Background="#ee82ee"  BorderThickness="1" HorizontalAlignment="Center" Height="180" VerticalAlignment="Top" Width="1920">
-      <Label x:Name="Label_ProgramingTIPS_Title" Content="ProgrammingTIPS Title" FontSize="80" HorizontalAlignment="Left" Height="180" Margin="9,0,0,0" VerticalAlignment="Center" Width="755"/>
+    <Grid>
+        <Border BorderBrush="Black" Background="#ee82ee"  BorderThickness="1" HorizontalAlignment="Center" Height="180" VerticalAlignment="Top" Width="1920">
+            <Label x:Name="Label_ProgramingTIPS_Title" Content="ProgrammingTIPS Title" FontSize="80" HorizontalAlignment="Left" Height="180" Margin="9,0,0,0" VerticalAlignment="Center" Width="884"/>
 
-    </Border>
-    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="765" Margin="0,185,0,0" VerticalAlignment="Top" Width="1920">
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="765" Margin="0,185,0,0" VerticalAlignment="Top" Width="1920">
             <ScrollViewer Width="1916">
                 <Label x:Name="Label_ProgramingTIPS_Content" Content="ProgramingTIPS Content" FontSize="28" HorizontalAlignment="Center" Height="755" Margin="0,9,0,0" VerticalAlignment="Top" Width="1900"/>
             </ScrollViewer>
 
-    </Border>
-    <Button x:Name="Button_Navi_Back" Content="前のノート" Background="#ee82ee" FontSize="40" HorizontalAlignment="Left" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand" Click="Button_Navi_Other_Click"/>
-    <Button x:Name="Button_Navi_TOC" Content="目次" Background="#ee82ee" FontSize="40" HorizontalAlignment="Center" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand" Click="Button_Navi_TOC_Click"/>
+        </Border>
+        <Button x:Name="Button_Navi_Back" Content="前のノート" Background="#ee82ee" FontSize="40" HorizontalAlignment="Left" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand" Click="Button_Navi_Other_Click"/>
+        <Button x:Name="Button_Navi_TOC" Content="目次" Background="#ee82ee" FontSize="40" HorizontalAlignment="Center" Height="130" Margin="0,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand" Click="Button_Navi_TOC_Click"/>
         <Button x:Name="Button_Navi_Next" Content="次のノート" Background="#ee82ee" FontSize="40" HorizontalAlignment="Left" Height="130" Margin="1596,950,0,0" VerticalAlignment="Top" Width="324" Cursor="Hand" Click="Button_Navi_Other_Click"/>
     </Grid>
 </Page>
