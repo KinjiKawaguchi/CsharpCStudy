@@ -18,77 +18,58 @@ namespace CStudy
 {
     public partial class ProgramingTIPS_Content : Page
     {
-        public ProgramingTIPS_Content(string Which_Note_Open)
+        public ProgramingTIPS_Content(string Which_Note_Open)////おなじない
         {
-            InitializeComponent();
+            InitializeComponent();//おなじない
+            Method_PageOpen(Which_Note_Open);//メソッドPageOpenへ
+        }
+
+        private void Button_Navi_Other_Click(object sender, RoutedEventArgs e)////ほかのページを見ることを要求されたら
+        {
+            string Which_Note_Open = ((Button)sender).Name.ToString();//Which_Note_Openを押されたボタンの名前と定義
+            switch (Which_Note_Open)///Which_Note_Openの値は？
+            {
+                case "Button_Navi_Back":///Backボタンだったら
+                    Which_Note_Open = Button_Navi_Back.Content.ToString();///バックボタンのコンテンツをWhich_Note_Openに代入(1へ～16へってやつ)
+                    break;//次へ
+                default:///上記以外なら
+                    Which_Note_Open = Button_Navi_Next.Content.ToString();///ネクストボタンのコンテンツをWhich_Note_Openに代入(同上)
+                    break;//次へ
+            }
+            Which_Note_Open = "_" + Which_Note_Open.Substring(0, Which_Note_Open.Length - 1);///Which_Note_OpenにWhich_Note_Openの1文字目からWhich_Note_Openの文字数-1文字目までを代入した物の先頭に"_"をつける(要するに”へ”を排除し先頭に_をつけることでファイルパスに使える)
+            Method_PageOpen(Which_Note_Open);//メソッドPageOpenへ
+        }
+
+        private void Method_PageOpen(string Which_Note_Open)////メソッド"PageOpen"
+        {
             string Path_Note = @"./data\note\" + Which_Note_Open;//ノートのパスを設定1
             string Path_Note_Title = Path_Note + "_Title" + ".CStudy";//ノートのタイトルパスを設定
             Path_Note = Path_Note + ".CStudy";//ノートのファイルパス設定2
-            StreamReader Read_Title = new StreamReader(Path_Note_Title, Encoding.GetEncoding("Shift_JIS"));
-            string Input_ProgramingTIPS_Title = Read_Title.ReadToEnd();
-            Label_ProgramingTIPS_Title.Content = Input_ProgramingTIPS_Title;
-            Read_Title.Close();
-            StreamReader Read_Content = new StreamReader(Path_Note, Encoding.GetEncoding("Shift_JIS"));
-            string Input_ProgramingTIPS_Content = Read_Content.ReadToEnd();
-            Label_ProgramingTIPS_Content.Content = Input_ProgramingTIPS_Content;
-            Read_Content.Close();
+            Label_ProgramingTIPS_Title.Content = ReadFile(Path_Note_Title);
+            Label_ProgramingTIPS_Content.Content = ReadFile(Path_Note);
             Which_Note_Open = Which_Note_Open.Substring(1, Which_Note_Open.Length - 1);
-            int Note_Num;
-            int.TryParse(Which_Note_Open, out Note_Num);
-            switch(Note_Num)
+            int.TryParse(Which_Note_Open, out int Note_Num);
+            Button_Navi_Back.Visibility = Visibility.Visible;
+            Button_Navi_Next.Visibility = Visibility.Visible;
+            switch (Note_Num)
             {
                 case 1:
-                    Button_Navi_Back.Visibility = System.Windows.Visibility.Hidden;
+                    Button_Navi_Back.Visibility = Visibility.Hidden;
                     break;
                 case 16:
-                    Button_Navi_Next.Visibility = System.Windows.Visibility.Hidden;
+                    Button_Navi_Next.Visibility = Visibility.Hidden;
                     break;
             }
             Button_Navi_Back.Content = Note_Num - 1 + "へ";
             Button_Navi_Next.Content = Note_Num + 1 + "へ";
         }
 
-        private void Button_Navi_Other_Click(object sender, RoutedEventArgs e)
+        private string ReadFile(string Path_File)
         {
-            string Which_Note_Open;
-            string which_button_click =((Button)sender).Name.ToString();
-            if(which_button_click == "Button_Navi_Back")
-            {
-                Which_Note_Open = Button_Navi_Back.Content.ToString();
-            }
-            else
-            {
-                Which_Note_Open = Button_Navi_Next.Content.ToString();
-            }
-            Which_Note_Open = Which_Note_Open.Substring(0, Which_Note_Open.Length - 1);
-            Which_Note_Open = "_" + Which_Note_Open;
-            string Path_Note = @"./data\note\" + Which_Note_Open;//ノートのパスを設定1
-            string Path_Note_Title = Path_Note + "_Title" + ".CStudy";//ノートのタイトルパスを設定
-            Path_Note = Path_Note + ".CStudy";//ノートのファイルパス設定2
-            StreamReader Read_Title = new StreamReader(Path_Note_Title, Encoding.GetEncoding("Shift_JIS"));
-            string Input_ProgramingTIPS_Title = Read_Title.ReadToEnd();
-            Label_ProgramingTIPS_Title.Content = Input_ProgramingTIPS_Title;
-            Read_Title.Close();
-            StreamReader Read_Content = new StreamReader(Path_Note, Encoding.GetEncoding("Shift_JIS"));
-            string Input_ProgramingTIPS_Content = Read_Content.ReadToEnd();
-            Label_ProgramingTIPS_Content.Content = Input_ProgramingTIPS_Content;
-            Read_Content.Close();
-            Which_Note_Open = Which_Note_Open.Substring(1, Which_Note_Open.Length - 1);
-            int Note_Num;
-            int.TryParse(Which_Note_Open, out Note_Num);
-            Button_Navi_Back.Visibility = System.Windows.Visibility.Visible;
-            Button_Navi_Next.Visibility = System.Windows.Visibility.Visible;
-            switch (Note_Num)
-            {
-                case 1:
-                    Button_Navi_Back.Visibility = System.Windows.Visibility.Hidden;
-                    break;
-                case 16:
-                    Button_Navi_Next.Visibility = System.Windows.Visibility.Hidden;
-                    break;
-            }
-            Button_Navi_Back.Content = Note_Num - 1 + "へ";
-            Button_Navi_Next.Content = Note_Num + 1 + "へ";
+            StreamReader Read = new StreamReader(Path_File, Encoding.GetEncoding("Shift_JIS"));///ShiftJISで読み込むことを定義
+            string OutPut = Read.ReadToEnd();
+            Read.Close();///タイトルファイルをファイルの終わりまで読む
+            return OutPut;
         }
 
         private void Button_Navi_TOC_Click(object sender, RoutedEventArgs e)

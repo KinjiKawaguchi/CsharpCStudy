@@ -32,34 +32,34 @@ namespace CStudy
 
         private void Botton_Select_Login_Click(object sender, RoutedEventArgs e)////ログインが選択されたら
         {
-            Label_Register_UserID.Visibility = System.Windows.Visibility.Hidden;//登録関係アイテムを非表示-------------------------------------------------------↓
-            TextBox_Register_UserID.Visibility = System.Windows.Visibility.Hidden;
-            Label_Register_Password.Visibility = System.Windows.Visibility.Hidden;
-            PasswordBox_Register_Password.Visibility = System.Windows.Visibility.Hidden;
-            Botton_Register.Visibility = System.Windows.Visibility.Hidden;
-            Label_Register_PasswordConfirm.Visibility = System.Windows.Visibility.Hidden;
-            PasswordBox_Register_PasswordConfirm.Visibility = System.Windows.Visibility.Hidden;//---------------------------------------------------------------↑
-            Label_Login_UserID.Visibility = System.Windows.Visibility.Visible;//ログイン関係のアイテムを表示-----------------------------------------------------↓
-            TextBox_Login_UserID.Visibility = System.Windows.Visibility.Visible;
-            Label_Login_Password.Visibility = System.Windows.Visibility.Visible;
-            PasswordBox_Login_Password.Visibility = System.Windows.Visibility.Visible;
-            Botton_Login.Visibility = System.Windows.Visibility.Visible;//--------------------------------------------------------------------------------------↑
+            Label_Register_UserID.Visibility = Visibility.Hidden;//登録関係アイテムを非表示-------------------------------------------------------↓
+            TextBox_Register_UserID.Visibility = Visibility.Hidden;
+            Label_Register_Password.Visibility = Visibility.Hidden;
+            PasswordBox_Register_Password.Visibility = Visibility.Hidden;
+            Botton_Register.Visibility = Visibility.Hidden;
+            Label_Register_PasswordConfirm.Visibility = Visibility.Hidden;
+            PasswordBox_Register_PasswordConfirm.Visibility = Visibility.Hidden;//---------------------------------------------------------------↑
+            Label_Login_UserID.Visibility = Visibility.Visible;//ログイン関係のアイテムを表示-----------------------------------------------------↓
+            TextBox_Login_UserID.Visibility = Visibility.Visible;
+            Label_Login_Password.Visibility = Visibility.Visible;
+            PasswordBox_Login_Password.Visibility = Visibility.Visible;
+            Botton_Login.Visibility = Visibility.Visible;//--------------------------------------------------------------------------------------↑
         }
 
         private void Botton_Select_Register_Click(object sender, RoutedEventArgs e)////登録が選択されたら
         {
-            Label_Login_UserID.Visibility = System.Windows.Visibility.Hidden;//ログインアイテムを非表示----------------------------------------------------------↓
-            TextBox_Login_UserID.Visibility = System.Windows.Visibility.Hidden;
-            Label_Login_Password.Visibility = System.Windows.Visibility.Hidden;
-            PasswordBox_Login_Password.Visibility = System.Windows.Visibility.Hidden;
-            Botton_Login.Visibility = System.Windows.Visibility.Hidden;//---------------------------------------------------------------------------------------↑
-            Label_Register_UserID.Visibility = System.Windows.Visibility.Visible;//-----------------------------------------------------------------------------↓
-            TextBox_Register_UserID.Visibility = System.Windows.Visibility.Visible;
-            Label_Register_Password.Visibility = System.Windows.Visibility.Visible;
-            PasswordBox_Register_Password.Visibility = System.Windows.Visibility.Visible;
-            Label_Register_PasswordConfirm.Visibility= System.Windows.Visibility.Visible;
-            PasswordBox_Register_PasswordConfirm.Visibility = System.Windows.Visibility.Visible;
-            Botton_Register.Visibility = System.Windows.Visibility.Visible;//-----------------------------------------------------------------------------------↑
+            Label_Login_UserID.Visibility = Visibility.Hidden;//ログインアイテムを非表示----------------------------------------------------------↓
+            TextBox_Login_UserID.Visibility = Visibility.Hidden;
+            Label_Login_Password.Visibility = Visibility.Hidden;
+            PasswordBox_Login_Password.Visibility = Visibility.Hidden;
+            Botton_Login.Visibility = Visibility.Hidden;//---------------------------------------------------------------------------------------↑
+            Label_Register_UserID.Visibility = Visibility.Visible;//-----------------------------------------------------------------------------↓
+            TextBox_Register_UserID.Visibility = Visibility.Visible;
+            Label_Register_Password.Visibility = Visibility.Visible;
+            PasswordBox_Register_Password.Visibility = Visibility.Visible;
+            Label_Register_PasswordConfirm.Visibility= Visibility.Visible;
+            PasswordBox_Register_PasswordConfirm.Visibility = Visibility.Visible;
+            Botton_Register.Visibility = Visibility.Visible;//-----------------------------------------------------------------------------------↑
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)////Loginボタンが押されたら
