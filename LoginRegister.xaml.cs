@@ -75,7 +75,7 @@ namespace CStudy
             {
                 if (new DirectoryInfo(Path_Userdata).Exists)///ディレクトリデータ(ユーザデータ).存在するか　真：↑　偽：↓
                 {
-                    Path_Userdata = Path_Userdata + @"\password.CStudy";//passwordファイルへのアクセスパスを作成
+                    Path_Userdata += @"\password.CStudy";//passwordファイルへのアクセスパスを作成
                     StreamReader ReadPassword = new StreamReader(Path_Userdata, Encoding.GetEncoding("Shift_JIS"));//パスワードファイルパスと、入力形式をReadPasswordに定義
                     string Check_Password = ReadPassword.ReadLine();//Cjeck_PassWordにパスワードを読み込んで代入。
                     if (Login_Password == Check_Password)///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
@@ -107,7 +107,7 @@ namespace CStudy
                     else
                     {
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
-                        Path_Userdata = Path_Userdata + ("\\password.CStudy");//パスワードファイルのパスを定義
+                        Path_Userdata += ("\\password.CStudy");//パスワードファイルのパスを定義
                         File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);//パスワードファイルにパスワードを保存
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }

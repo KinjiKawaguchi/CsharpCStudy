@@ -44,7 +44,7 @@ namespace CStudy
         {
             string Path_Note = @"./data\note\" + Which_Note_Open;//ノートのパスを設定1
             string Path_Note_Title = Path_Note + "_Title" + ".CStudy";//ノートのタイトルパスを設定
-            Path_Note = Path_Note + ".CStudy";//ノートのファイルパス設定2
+            Path_Note += ".CStudy";//ノートのファイルパス設定2
             Label_ProgramingTIPS_Title.Content = ReadFile(Path_Note_Title);//タイトルラベルにメソッドReadFileの返り値を代入
             Label_ProgramingTIPS_Content.Content = ReadFile(Path_Note);//コンテンツラベルにメソッドReadFileの返り値を代入
             Which_Note_Open = Which_Note_Open.Substring(1, Which_Note_Open.Length - 1);//Which_Note_Openから"_"を排除
