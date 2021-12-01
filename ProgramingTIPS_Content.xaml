@@ -15,7 +15,7 @@
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="765" Margin="0,185,0,0" VerticalAlignment="Top" Width="1920">
             <ScrollViewer Width="1916">
-                <Label x:Name="Label_ProgramingTIPS_Content" Content="ProgramingTIPS Content" FontSize="28" HorizontalAlignment="Center" Height="755" Margin="0,9,0,0" VerticalAlignment="Top" Width="1900"/>
+                <Label x:Name="Label_ProgramingTIPS_Content" Content="ProgramingTIPS Content" FontSize="28" Height="1" Margin="0,9,0,0" Width="1900"/>
             </ScrollViewer>
 
         </Border>

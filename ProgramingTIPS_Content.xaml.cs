@@ -45,8 +45,12 @@ namespace CStudy
             string Path_Note = @"./data\note\" + Which_Note_Open;//ノートのパスを設定1
             string Path_Note_Title = Path_Note + "_Title" + ".CStudy";//ノートのタイトルパスを設定
             Path_Note += ".CStudy";//ノートのファイルパス設定2
-            Label_ProgramingTIPS_Title.Content = ReadFile(Path_Note_Title);//タイトルラベルにメソッドReadFileの返り値を代入
-            Label_ProgramingTIPS_Content.Content = ReadFile(Path_Note);//コンテンツラベルにメソッドReadFileの返り値を代入
+            Label_ProgramingTIPS_Title.Content = Method_ReadFile(Path_Note_Title);//タイトルラベルにメソッドReadFileの返り値を代
+            Label_ProgramingTIPS_Content.Content = Method_ReadFile(Path_Note);//コンテンツラベルにメソッドReadFileの返り値を代入
+            string Str_Before = Label_ProgramingTIPS_Content.Content.ToString();//コンテンツ表示内容をStr_Beforeに代入
+            string Str_After = Str_Before.Replace("\n", "");//Str_Beforeから改行文字を取り除いたものをStr_Afterに代入
+            int Amount_NewLine = Str_Before.Length - Str_After.Length;//Str_Beforeの文字数からStr_Afterの文字数を引き改行の数を導き変数に代入
+            Label_ProgramingTIPS_Content.Height = Amount_NewLine * 40;//改行の数×４０ピクセルをラベルの縦の長さに定義する。→動的なラベルサイズの変更。
             Which_Note_Open = Which_Note_Open.Substring(1, Which_Note_Open.Length - 1);//Which_Note_Openから"_"を排除
             int.TryParse(Which_Note_Open, out int Note_Num);//stringからintに変換
             Button_Navi_Back.Content = Note_Num - 1 + "へ";//ボタンBackのコンテンツの数字を-1して”へ”をつけ文字データに変換
@@ -65,13 +69,21 @@ namespace CStudy
 
         }
 
-        private string ReadFile(string Path_File)////メソッドReadFile
+        private string Method_ReadFile(string Path_File)////メソッドReadFile
         {
             StreamReader Read = new StreamReader(Path_File, Encoding.GetEncoding("Shift_JIS"));///ShiftJISで読み込むことを定義
             string OutPut = Read.ReadToEnd();//ファイルの終わりまで読む
             Read.Close();///ファイルクローズ
             return OutPut;//ファイルの中身を返す
         }
+
+
+        ////int Method_Get_Amount_NewLine(string Str_Before)
+        //{
+        //    string Str_After = Str_Before.Replace("\n", "");
+        //    int Amount_NewLine = Str_Before.Length - Str_After.Length;
+        //    return Amount_NewLine;
+        //}
 
         private void Button_Navi_TOC_Click(object sender, RoutedEventArgs e)////目次に戻るボタンが押されたら
         {
