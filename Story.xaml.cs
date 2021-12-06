@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace CStudy
 {
@@ -23,6 +24,25 @@ namespace CStudy
         public Story()
         {
             InitializeComponent();
+            string Path_NowUser = @"./data\NowUser.CStudy";
+            string NowUser = Method_ReadFile(Path_NowUser);
+            string Path_SaveData = @"./data\user\" + NowUser + @"\save.CStudy";
+            string SaveData = Method_ReadFile(Path_SaveData);
+            switch (SaveData)
+            {
+                case "1":
+
+                    break;
+
+            }
+
+        }
+        public string Method_ReadFile(string Path_File)
+        {
+            StreamReader Read = new StreamReader(Path_File, Encoding.GetEncoding("Shift_JIS"));///ShiftJISで読み込むことを定義
+            string OutPut = Read.ReadToEnd();//ファイルの終わりまで読む
+            Read.Close();///ファイルクローズ
+            return OutPut;
         }
     }
 }

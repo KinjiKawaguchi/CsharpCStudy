@@ -80,6 +80,7 @@ namespace CStudy
                     string Check_Password = ReadPassword.ReadLine();//Cjeck_PassWordにパスワードを読み込んで代入。
                     if (Login_Password == Check_Password)///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
                     {
+                        Method_Nowuser(Login_UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
                     else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
@@ -102,18 +103,26 @@ namespace CStudy
 
                 if (Register_Password == Register_PasswordConfirm)///入力されたパスワードが一致していたら　真：↑　偽：↓
                 {
-                    string Path_Userdata = "data\\user\\" + Register_UserID;//ユーザディレクトリ作成用ファイルパスを定義
+                    string Path_Userdata = @"./data\user\" + Register_UserID;//ユーザディレクトリ作成用ファイルパスを定義
                     if (new DirectoryInfo(Path_Userdata).Exists) MessageBox.Show("すでに存在するUserIDです。");///すでにユーザディレクトリが存在していたら　偽：↓
                     else
                     {
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
-                        Path_Userdata += ("\\password.CStudy");//パスワードファイルのパスを定義
+                        Path_Userdata += (@"\password.CStudy");//パスワードファイルのパスを定義
                         File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);//パスワードファイルにパスワードを保存
+                        Method_Nowuser(Register_UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
                 }
                 else MessageBox.Show("パスワードが一致していません。");//パスワード不一致を表示
             }
+        }
+
+        public void Method_Nowuser(string UserID)
+        {
+            string Path_NowUser = @"./data\NowUser.CStudy";
+            File.Delete(Path_NowUser);
+            File.AppendAllText(Path_NowUser, UserID);//パスワードファイルにパスワードを保存
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)////Exitボタンが押されたら

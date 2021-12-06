@@ -9,6 +9,8 @@
       Background="White"
       Title="Page2">
     <Grid>
-        <Label FontSize="50">Story</Label>
+        <Label FontSize="50">
+            <WebBrowser Source="https://paiza.io/ja/projects/new" Width="952"/>
+        </Label>
     </Grid>
 </Page>
