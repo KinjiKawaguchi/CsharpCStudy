@@ -25,23 +25,32 @@ namespace CStudy
         {
             InitializeComponent();
             string Path_NowUser = @"./data\NowUser.CStudy";
-            string NowUser = Method_ReadFile(Path_NowUser);
+            string NowUser = Method_ReadFile(Path_NowUser,0);
             string Path_SaveData = @"./data\user\" + NowUser + @"\save.CStudy";
-            string SaveData = Method_ReadFile(Path_SaveData);
-            switch (SaveData)
+            string SaveData = Method_ReadFile(Path_SaveData,1);
+            int SaveData_Num;
+            SaveData_Num = int.Parse(SaveData);
+            for(int i = 0; i < SaveData_Num; i++)
             {
-                case "1":
-
-                    break;
-
+                
             }
-
+            string Path_MailData = @"./data\story\mail\" + SaveData + "-1.CStudy";
+            Method_ReadFile(Path_MailData,0);
         }
-        public string Method_ReadFile(string Path_File)
+
+        public string Method_ReadFile(string Path_File,int How)
         {
-            StreamReader Read = new StreamReader(Path_File, Encoding.GetEncoding("Shift_JIS"));///ShiftJISで読み込むことを定義
-            string OutPut = Read.ReadToEnd();//ファイルの終わりまで読む
-            Read.Close();///ファイルクローズ
+            StreamReader Read= new StreamReader(Path_File,Encoding.GetEncoding("Shift_JIS"));
+            string OutPut = "";
+            if(How == 0)
+            {
+                OutPut = Read.ReadToEnd();//ファイルの終わりまで読む
+                Read.Close();///ファイルクローズ
+            }
+            else
+            {
+                while(Read.EndOfStream == false) OutPut = Read.ReadLine();
+            }
             return OutPut;
         }
     }

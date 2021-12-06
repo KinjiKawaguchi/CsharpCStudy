@@ -103,6 +103,7 @@ namespace CStudy
 
                 if (Register_Password == Register_PasswordConfirm)///入力されたパスワードが一致していたら　真：↑　偽：↓
                 {
+                    string Path_Savedata = @"./data\user\" + Register_UserID + @"\save.CStudy";
                     string Path_Userdata = @"./data\user\" + Register_UserID;//ユーザディレクトリ作成用ファイルパスを定義
                     if (new DirectoryInfo(Path_Userdata).Exists) MessageBox.Show("すでに存在するUserIDです。");///すでにユーザディレクトリが存在していたら　偽：↓
                     else
@@ -110,6 +111,7 @@ namespace CStudy
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
                         Path_Userdata += (@"\password.CStudy");//パスワードファイルのパスを定義
                         File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);//パスワードファイルにパスワードを保存
+                        File.AppendAllText(Path_Savedata, "0");
                         Method_Nowuser(Register_UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
