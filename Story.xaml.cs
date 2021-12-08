@@ -45,25 +45,25 @@ namespace CStudy
                 string UserID = Method_CheckUserID();//現在のUserIDを取得
                 string Path_Savedata = @"./data\user\" + UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
                 File.AppendAllText(Path_Savedata, "\n" + SaveData_Num + 1);//セーブデータを1進める
-                Method_MailOpen(SaveData_Num, "L");//
-                Button_Reply.Visibility = Visibility.Hidden;
-                Button_NextStory.Visibility = Visibility.Visible;
-            }
-            else
+                Method_MailOpen(SaveData_Num, "L");//クリアメッセージ（メール）を表示
+                Button_Reply.Visibility = Visibility.Hidden;//返信ボタンを不可視にする
+                Button_NextStory.Visibility = Visibility.Visible;//次のステージに進むボタンを可視化
+            
+            else///期待される値と一致していなかったら
             {
-                TextBlock_Mail.Text = "値が違うようだぞ。";
-                Button_Reply.Visibility = Visibility.Hidden;
-                Button_Retry.Visibility = Visibility.Visible;
+                TextBlock_Mail.Text = "値が違うようだぞ。";//メールの欄に値が違うエラーを表示
+                Button_Reply.Visibility = Visibility.Hidden;//リプライボタンを不可視
+                Button_Retry.Visibility = Visibility.Visible;//リトライボタンを可視
             }
         }
 
-        private void Button_Try_Click(object sender, RoutedEventArgs e)
+        private void Button_Try_Click(object sender, RoutedEventArgs e)////リトライまたは次のステージボタンが押されたら
         {
-            Button_Reply.Visibility = Visibility.Visible;
-            Button_NextStory.Visibility = Visibility.Hidden;
-            Button_Retry.Visibility = Visibility.Hidden;
-            string SaveData = Method_CheckSave();
-            int SaveData_Num = int.Parse(SaveData);
+            Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
+            Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
+            Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視
+            string SaveData = Method_CheckSave();//SaveDataを取得
+            int SaveData_Num = int.Parse(SaveData);//SaveDataをint型に変換
             if(SaveData_Num == 4)
             {
                 MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");
