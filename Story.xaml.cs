@@ -24,34 +24,57 @@ namespace CStudy
         public Story()
         {
             InitializeComponent();
-            string Path_NowUser = @"./data\NowUser.CStudy";
-            string NowUser = Method_ReadFile(Path_NowUser,0);
-            string Path_SaveData = @"./data\user\" + NowUser + @"\save.CStudy";
-            string SaveData = Method_ReadFile(Path_SaveData,1);
-            int SaveData_Num;
-            SaveData_Num = int.Parse(SaveData);
-            for(int i = 0; i < SaveData_Num; i++)
-            {
-                
-            }
-            string Path_MailData = @"./data\story\mail\" + SaveData + "-1.CStudy";
-            Method_ReadFile(Path_MailData,0);
+            string SaveData = Method_CheckSave();
+            int SaveData_Num = int.Parse(SaveData);
+            Method_MailOpen(SaveData_Num, "F");
         }
 
-        public string Method_ReadFile(string Path_File,int How)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            StreamReader Read= new StreamReader(Path_File,Encoding.GetEncoding("Shift_JIS"));
+            string SaveData = Method_CheckSave();
+            string Path_Answer = @"./data\story\answer\" + SaveData + @"\answer.CStudy";
+            if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All")) 
+            {
+                int SaveData_Num = int.Parse(SaveData);
+                Method_MailOpen(SaveData_Num, "L");
+            }
+        }
+
+        public string Method_CheckUserID()
+        {
+            string Path_NowUser = @"./data\NowUser.CStudy";
+            string NowUser = Method_ReadFile(Path_NowUser, "All");
+            return NowUser;
+        }
+
+        public string Method_CheckSave()
+        {
+            string Path_NowUser = @"./data\NowUser.CStudy";
+            string NowUser = Method_ReadFile(Path_NowUser, "All");
+            string Path_SaveData = @"./data\user\" + NowUser + @"\save.CStudy";
+            string SaveData = Method_ReadFile(Path_SaveData, "Line");
+            return SaveData;
+        }
+
+        public void Method_MailOpen(int SaveNum, string MailType)
+        {
+            string Path_MailData = @"./data\story\mail" + SaveNum + @"\" + MailType + @".CStudy";
+            Method_ReadFile(Path_MailData, "All");
+            TextBlock_Mail.Text = Method_ReadFile(Path_MailData, "All");
+        }
+
+        public string Method_ReadFile(string Path_File, string  How)
+        {
+            StreamReader Read = new StreamReader(Path_File, Encoding.GetEncoding("Shift_JIS"));
             string OutPut = "";
-            if(How == 0)
+            if (How == "All")
             {
                 OutPut = Read.ReadToEnd();//ファイルの終わりまで読む
                 Read.Close();///ファイルクローズ
             }
-            else
-            {
-                while(Read.EndOfStream == false) OutPut = Read.ReadLine();
-            }
+            else while (Read.EndOfStream == false) OutPut = Read.ReadLine();
             return OutPut;
         }
+
     }
 }
