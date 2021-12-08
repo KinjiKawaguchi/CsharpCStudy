@@ -22,30 +22,30 @@ namespace CStudy
     /// </summary>
     public partial class Story : Page
     {
-        public Story()
+        public Story()////ストーリーが選択されたら
         {
-            InitializeComponent();
-            string SaveData = Method_CheckSave();
-            int SaveData_Num = int.Parse(SaveData);
-            if (SaveData_Num == 4)
+            InitializeComponent();////おまじない
+            string SaveData = Method_CheckSave();//SaveDataにメソッドCheckSaveの返り値を代入
+            int SaveData_Num = int.Parse(SaveData);//SaveDataをint型に変換しSaveData_Numに代入
+            if (SaveData_Num == 4)///SaveData_Numが4なら
             {
-                MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");
-                Application.Current.Shutdown();
+                MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
+                Application.Current.Shutdown();//アプリケーションシャットダウン
             }
-            else Method_MailOpen(SaveData_Num, "F");
+            else Method_MailOpen(SaveData_Num, "F");//SaveData_Numの最初のファイルを画面に表示
         }
 
-        private void Button_Reply_Click(object sender, RoutedEventArgs e)
+        private void Button_Reply_Click(object sender, RoutedEventArgs e)////Button_Replyがクリックされたら
         {
-            string SaveData = Method_CheckSave();
-            int SaveData_Num = int.Parse(SaveData);
-            string Path_Answer = @"./data\story\answer\" + SaveData + @"\answer.CStudy";
-            if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))
+            string SaveData = Method_CheckSave();//SaveDataを取得
+            int SaveData_Num = int.Parse(SaveData);//SaveDataをint型に変換
+            string Path_Answer = @"./data\story\answer\" + SaveData + @"\answer.CStudy";//期待される出力が保存されたPathを定義
+            if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))///返信が期待された値なら
             {
-                string UserID = Method_CheckUserID();
-                string Path_Savedata = @"./data\user\" + UserID + @"\save.CStudy";
-                File.AppendAllText(Path_Savedata, "\n" + SaveData_Num + 1);
-                Method_MailOpen(SaveData_Num, "L");
+                string UserID = Method_CheckUserID();//現在のUserIDを取得
+                string Path_Savedata = @"./data\user\" + UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
+                File.AppendAllText(Path_Savedata, "\n" + SaveData_Num + 1);//セーブデータを1進める
+                Method_MailOpen(SaveData_Num, "L");//
                 Button_Reply.Visibility = Visibility.Hidden;
                 Button_NextStory.Visibility = Visibility.Visible;
             }
