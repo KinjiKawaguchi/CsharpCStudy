@@ -81,8 +81,7 @@ namespace CStudy
 
         public string Method_CheckSave()
         {
-            string Path_NowUser = @"./data\NowUser.CStudy";
-            string NowUser = Method_ReadFile(Path_NowUser, "All");
+            string NowUser = Method_CheckUserID();
             string Path_SaveData = @"./data\user\" + NowUser + @"\save.CStudy";
             string SaveData = Method_ReadFile(Path_SaveData, "Line");
             return SaveData;
