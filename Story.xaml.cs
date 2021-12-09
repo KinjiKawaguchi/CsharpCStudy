@@ -22,33 +22,40 @@ namespace CStudy
     /// </summary>
     public partial class Story : Page
     {
+        public static class Global
+        {
+            public static string UserID;
+            public static string SaveData;
+            public static int SaveData_Num;
+            public static int Story_amount;
+        }
+
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-            string SaveData = Method_CheckSave();//SaveDataにメソッドCheckSaveの返り値を代入
-            int SaveData_Num = int.Parse(SaveData);//SaveDataをint型に変換しSaveData_Numに代入
-            if (SaveData_Num == 4)///SaveData_Numが4なら
+            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy","All");
+            Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
+            Global.SaveData_Num = int .Parse(Global.SaveData);
+            Global.Story_amount = ディレクトリの数取得
+            if (Global.SaveData_Num == 4)///SaveData_Numが4なら
             {
                 MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
                 Application.Current.Shutdown();//アプリケーションシャットダウン
             }
-            else Method_MailOpen(SaveData_Num, "F");//SaveData_Numの最初のファイルを画面に表示
+            else Method_MailOpen(Global.SaveData_Num, "F");//SaveData_Numの最初のファイルを画面に表示
         }
 
         private void Button_Reply_Click(object sender, RoutedEventArgs e)////Button_Replyがクリックされたら
         {
-            string SaveData = Method_CheckSave();//SaveDataを取得
-            int SaveData_Num = int.Parse(SaveData);//SaveDataをint型に変換
-            string Path_Answer = @"./data\story\answer\" + SaveData + @"\answer.CStudy";//期待される出力が保存されたPathを定義
+            string Path_Answer = @"./data\story\answer\" + Global.SaveData + @"\answer.CStudy";//期待される出力が保存されたPathを定義
             if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))///返信が期待された値なら
             {
-                string UserID = Method_CheckUserID();//現在のUserIDを取得
-                string Path_Savedata = @"./data\user\" + UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
-                File.AppendAllText(Path_Savedata, "\n" + SaveData_Num + 1);//セーブデータを1進める
-                Method_MailOpen(SaveData_Num, "L");//クリアメッセージ（メール）を表示
+                string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
+                File.AppendAllText(Path_Savedata, "\n" + Global.SaveData_Num + 1);//セーブデータを1進める
+                Method_MailOpen(Global.SaveData_Num, "L");//クリアメッセージ（メール）を表示
                 Button_Reply.Visibility = Visibility.Hidden;//返信ボタンを不可視にする
                 Button_NextStory.Visibility = Visibility.Visible;//次のステージに進むボタンを可視化
-            
+            }
             else///期待される値と一致していなかったら
             {
                 TextBlock_Mail.Text = "値が違うようだぞ。";//メールの欄に値が違うエラーを表示
@@ -62,34 +69,19 @@ namespace CStudy
             Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
             Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
             Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視
-            string SaveData = Method_CheckSave();//SaveDataを取得
-            int SaveData_Num = int.Parse(SaveData);//SaveDataをint型に変換
-            if(SaveData_Num == 4)
+            if(Global.SaveData_Num == 4)
             {
                 MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");
                 Application.Current.Shutdown();
             }
-            else Method_MailOpen(SaveData_Num, "F");
+            else Method_MailOpen(Global.SaveData_Num, "F");
         }
 
-        public string Method_CheckUserID()
-        {
-            string Path_NowUser = @"./data\NowUser.CStudy";
-            string NowUser = Method_ReadFile(Path_NowUser, "All");
-            return NowUser;
-        }
 
-        public string Method_CheckSave()
-        {
-            string NowUser = Method_CheckUserID();
-            string Path_SaveData = @"./data\user\" + NowUser + @"\save.CStudy";
-            string SaveData = Method_ReadFile(Path_SaveData, "Line");
-            return SaveData;
-        }
 
-        public void Method_MailOpen(int SaveNum, string MailType)
+        public void Method_MailOpen(int SaveData_Num, string MailType)
         {
-            string Path_MailData = @"./data\story\mail\" + SaveNum + @"\" + MailType + @".CStudy";
+            string Path_MailData = @"./data\story\mail\" + SaveData_Num + @"\" + MailType + @".CStudy";
             Method_ReadFile(Path_MailData, "All");
             TextBlock_Mail.Text = Method_ReadFile(Path_MailData, "All");
         }
