@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
 
 namespace CStudy
 {
@@ -72,14 +62,6 @@ namespace CStudy
             Read.Close();///ファイルクローズ
             return OutPut;//ファイルの中身を返す
         }
-
-
-        ////int Method_Get_Amount_NewLine(string Str_Before)
-        //{
-        //    string Str_After = Str_Before.Replace("\n", "");
-        //    int Amount_NewLine = Str_Before.Length - Str_After.Length;
-        //    return Amount_NewLine;
-        //}
 
         private void Button_Navi_TOC_Click(object sender, RoutedEventArgs e)////目次に戻るボタンが押されたら
         {

@@ -1,18 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace CStudy
@@ -32,8 +23,8 @@ namespace CStudy
 
         private void Button_Select_Click(object sender, RoutedEventArgs e)
         {
-            string Which_Select= ((Button)sender).Name.ToString();
-            switch(Which_Select)
+            string Which_Select = ((Button)sender).Name.ToString();
+            switch (Which_Select)
             {
                 case "Button_Select_Login":
                     Label_Register_UserID.Visibility = Visibility.Hidden;//登録関係アイテムを非表示-------------------------------------------------------↓
@@ -83,11 +74,20 @@ namespace CStudy
                         Method_Nowuser(Login_UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
-                    else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
+                    else
+                    {
+                        MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
+                    }
                 }
-                else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
+                else
+                {
+                    MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
+                }
             }
-            else MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
+            else
+            {
+                MessageBox.Show("不正なログイン情報です。");//ログインエラーを出力
+            }
         }
 
 
@@ -96,8 +96,16 @@ namespace CStudy
             string Register_UserID = TextBox_Register_UserID.Text;//入力されたIDを変数に代入
             string Register_Password = PasswordBox_Register_Password.Password.ToString();//入力されたパスワードを変数に代入
             string Register_PasswordConfirm = PasswordBox_Register_PasswordConfirm.Password.ToString();//入力された再度入力パスワードを変数に代入
-            if (Register_UserID == "") MessageBox.Show("UserIDが入力されていません。");
-            if (Register_Password == "") MessageBox.Show("Passwordが入力されていません。");///パスワード未入力エラーを出力
+            if (Register_UserID == "")
+            {
+                MessageBox.Show("UserIDが入力されていません。");
+            }
+
+            if (Register_Password == "")
+            {
+                MessageBox.Show("Passwordが入力されていません。");
+            }
+            ///パスワード未入力エラーを出力
             else
             {
 
@@ -105,7 +113,11 @@ namespace CStudy
                 {
                     string Path_Savedata = @"./data\user\" + Register_UserID + @"\save.CStudy";
                     string Path_Userdata = @"./data\user\" + Register_UserID;//ユーザディレクトリ作成用ファイルパスを定義
-                    if (new DirectoryInfo(Path_Userdata).Exists) MessageBox.Show("すでに存在するUserIDです。");///すでにユーザディレクトリが存在していたら　偽：↓
+                    if (new DirectoryInfo(Path_Userdata).Exists)
+                    {
+                        MessageBox.Show("すでに存在するUserIDです。");
+                    }
+                    ///すでにユーザディレクトリが存在していたら　偽：↓
                     else
                     {
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
@@ -116,7 +128,10 @@ namespace CStudy
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
                 }
-                else MessageBox.Show("パスワードが一致していません。");//パスワード不一致を表示
+                else
+                {
+                    MessageBox.Show("パスワードが一致していません。");//パスワード不一致を表示
+                }
             }
         }
 

@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using System.Threading;
 
 namespace CStudy
 {
@@ -33,16 +21,19 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy","All");
+            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");
             Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
-            Global.SaveData_Num = int .Parse(Global.SaveData);
-            Global.Story_amount = ディレクトリの数取得
-            if (Global.SaveData_Num == 4)///SaveData_Numが4なら
+            Global.SaveData_Num = int.Parse(Global.SaveData);
+            Global.Story_amount = Directory.GetFiles(@"./data\story\answer", "*", SearchOption.TopDirectoryOnly).Length;
+            if (Global.SaveData_Num == Global.Story_amount)///SaveData_Numが4なら
             {
                 MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
                 Application.Current.Shutdown();//アプリケーションシャットダウン
             }
-            else Method_MailOpen(Global.SaveData_Num, "F");//SaveData_Numの最初のファイルを画面に表示
+            else
+            {
+                Method_MailOpen(Global.SaveData_Num, "F");//SaveData_Numの最初のファイルを画面に表示
+            }
         }
 
         private void Button_Reply_Click(object sender, RoutedEventArgs e)////Button_Replyがクリックされたら
@@ -69,12 +60,15 @@ namespace CStudy
             Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
             Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
             Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視
-            if(Global.SaveData_Num == 4)
+            if (Global.SaveData_Num == 4)
             {
                 MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");
                 Application.Current.Shutdown();
             }
-            else Method_MailOpen(Global.SaveData_Num, "F");
+            else
+            {
+                Method_MailOpen(Global.SaveData_Num, "F");
+            }
         }
 
 
@@ -94,7 +88,14 @@ namespace CStudy
             {
                 OutPut = Read.ReadToEnd();//ファイルの終わりまで読む
             }
-            else while (Read.EndOfStream == false) OutPut = Read.ReadLine();
+            else
+            {
+                while (Read.EndOfStream == false)
+                {
+                    OutPut = Read.ReadLine();
+                }
+            }
+
             Read.Close();
             return OutPut;
         }
