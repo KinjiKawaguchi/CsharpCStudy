@@ -8,13 +8,25 @@
       d:DesignHeight="1080" d:DesignWidth="1920"
       Background="White"
       Title="Page2">
-    <Grid>
-        <WebBrowser x:Name="WB_Paiza" Source="https://paiza.io/ja/projects/new" Width="952" Margin="0,0,968,0"/>
-        <TextBlock x:Name="TextBlock_Mail" HorizontalAlignment="Left" Margin="952,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="1080" Width="968" FontSize="20" Foreground="#FF1FFF00" Background="Black"/>
-        <Button x:Name="Button_Reply" Content="Reply" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Reply_Click"/>
-        <TextBox x:Name="TextBox_Reply" HorizontalAlignment="Left" Margin="1017,1048,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="823" Foreground="#FF2BFF00" SelectionBrush="#FF00FF10" Background="#FF696262"/>
+    <Grid OpacityMask="Black" Background="Black">
+        <Label x:Name="Label_Boot" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden"/>
+
+        <WebBrowser x:Name="WB_Paiza" Source="https://paiza.io/ja/projects/new" Width="952" Margin="0,0,968,0" Visibility="Hidden"/>
+        <TextBlock x:Name="TextBlock_Mail" HorizontalAlignment="Left" Margin="952,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="1080" Width="968" FontSize="20" Foreground="#FF1FFF00" Background="Black" Visibility="Hidden"/>
+        <TextBox x:Name="TextBox_Reply" HorizontalAlignment="Left" Margin="1017,1048,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="823" Foreground="#FF2BFF00" SelectionBrush="#FF00FF10" Background="#FF696262" Visibility="Hidden"/>
+        <Button x:Name="Button_Reply" Content="Reply" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Reply_Click" Visibility="Hidden"/>
         <Button x:Name="Button_Retry" Content="Retry" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Try_Click" Cursor="Hand" Visibility="Hidden"/>
         <Button x:Name="Button_NextStory" Content="Next" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Try_Click" Visibility="Hidden" Cursor="Hand"/>
+        <Button x:Name="Button_Mail" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="125" Width="125" Margin="10,10,0,0" BorderBrush="{x:Null}" Click="Button_Open_Mail_Click" Cursor="Hand" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/icon_mail.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Button_Mail2" Content="" HorizontalAlignment="Left" Margin="96,0,0,0" VerticalAlignment="Top" Height="50" Width="50" BorderBrush="{x:Null}" Click="Button_Open_Mail_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/iconNotifications_alert_badge.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Page>
