@@ -145,8 +145,6 @@ namespace CStudy
             Play_Game();
         }
 
-
-
         public void Method_MailOpen(int SaveData_Num, string MailType)
         {
             string Path_MailData = @"./data\story\mail\" + SaveData_Num + @"\" + MailType + @".CStudy";
