@@ -1,8 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Timers;
+using System.Windows.Threading;
 
 namespace CStudy
 {
@@ -13,10 +16,10 @@ namespace CStudy
     {
         public static class Global
         {
-            public static string UserID="";
-            public static string SaveData="";
-            public static int SaveData_Num=0;
-            public static int Story_amount=0;
+            public static string UserID = "";
+            public static string SaveData = "";
+            public static int SaveData_Num = 0;
+            public static int Story_amount = 0;
         }
 
         public Story()////ストーリーが選択されたら
@@ -29,43 +32,35 @@ namespace CStudy
             Global.Story_amount = Directory.GetFiles(@"./data\story\answer", "*", SearchOption.TopDirectoryOnly).Length;
             //----------------------------------------------------------------------------------------------------------------------------
             Play_Game();
-            //if (Global.SaveData_Num == Global.Story_amount)///SaveData_Numが4なら
-            //{
-            //    MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
-            //   Application.Current.Shutdown();//アプリケーションシャットダウン
-            //}
-            //else
-            //{
-            //    Method_MailOpen(Global.SaveData_Num, "F");//SaveData_Numの最初のファイルを画面に表示
-            //}
         }
+
+        private DispatcherTimer timer1 = new DispatcherTimer();
+        private Queue<string> lineQueue = new Queue<string>();
 
         public void Play_Game()
         {
+
             switch (Global.SaveData_Num)
             {
                 case 0:
                     Label_Boot.Visibility = Visibility.Visible;
                     string Path_File = (@"./data\story\boot.CStudy");
-                    Timer timer = new Timer(500);
-                    timer.Elapsed += (sender, e) =>
+                    // 表示データクリア
+                    lineQueue.Clear();
+                    // ファイル読み込み
+                    string[] file = System.IO.File.ReadAllLines(Path_File);
+                    // 表示データをキューに格納
+                    foreach (string line in file)
                     {
-                        StreamReader Read = new StreamReader(Path_File, Encoding.GetEncoding("Shift_JIS"));
-                        if(Read.EndOfStream == false)
-                        {
-                            Label_Boot.Content += Read.ReadLine();
-                        }
-                        else
-                        {
-                            timer.Stop();
-                        }
-                    };
-                    Label_Boot.Visibility = Visibility.Hidden;
-                    Button_Mail.Visibility = Visibility.Visible;
-                    Button_Mail2.Visibility = Visibility.Visible;
+                        lineQueue.Enqueue(line);
+                    }
+                    // タイマー開始
+                    timer1.Interval = new TimeSpan(0, 0, 0, 0, 250);
+                    timer1.Tick += timer1_Tick;
+                    timer1.Start();
                     break;
                 default:
-                    if(Global.SaveData_Num == Global.Story_amount)
+                    if (Global.SaveData_Num == Global.Story_amount)
                     {
                         MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
                         Application.Current.Shutdown();//アプリケーションシャットダウン
@@ -81,25 +76,42 @@ namespace CStudy
                     break;
             }
         }
-        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (lineQueue.Count > 0)
+            {
+                // キューから取り出し1行表示
+                Label_Boot.Content += "\n" + lineQueue.Dequeue();
+            }
+            else
+            {
+                // タイマー停止
+                timer1.Stop();
+                Label_Boot.Visibility = Visibility.Hidden;
+                Button_Mail.Visibility = Visibility.Visible;
+                Button_Mail2.Visibility = Visibility.Visible;
+            }
+        }
+
         //----------------------------------------------------------------------------------------------------------------------------
         private void Button_Open_Mail_Click(object sender, RoutedEventArgs e)
         {
             TextBlock_Mail.Visibility = Visibility.Visible;
             //TextBox_Reply.Visibility = Visibility.Visible;
             //Button_Reply.Visibility = Visibility.Visible;
-            Method_MailOpen(Global.SaveData_Num,"F");
+            Method_MailOpen(Global.SaveData_Num, "F");
             //メールにコーディン用のソフトをダウンロード・起動するように書く
             Button_Paiza_Download.Visibility = Visibility.Visible;
             //
         }
-        
+
         private void Button_Paiza_Download_Click(object sender, RoutedEventArgs e)
         {
             Button_Paiza_Download.Visibility = Visibility.Hidden;
             Button_Paiza.Visibility = Visibility.Visible;
         }
-        
+
         private void Button_Paiza_Click(object sender, RoutedEventArgs e)
         {
             Button_Mail.Visibility = Visibility.Hidden;
