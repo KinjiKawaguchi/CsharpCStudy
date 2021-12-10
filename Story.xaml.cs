@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -34,12 +33,10 @@ namespace CStudy
             Play_Game();
         }
 
-        private DispatcherTimer timer1 = new DispatcherTimer();
-        private Queue<string> lineQueue = new Queue<string>();
-
+        private readonly DispatcherTimer timer1 = new DispatcherTimer();
+        private readonly Queue<string> lineQueue = new Queue<string>();
         public void Play_Game()
         {
-
             switch (Global.SaveData_Num)
             {
                 case 0:
@@ -76,7 +73,6 @@ namespace CStudy
                     break;
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (lineQueue.Count > 0)
