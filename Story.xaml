@@ -27,6 +27,7 @@
                 <ImageBrush ImageSource="/iconNotifications_alert_badge.png"/>
             </Button.Background>
         </Button>
-
+        <Button x:Name="Button_Paiza_Download" Content="Button" HorizontalAlignment="Left" Margin="1428,642,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Paiza_Download_Click"/>
+        <Button x:Name="Button_Paiza" Content="Button" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Paiza_Click"/>
     </Grid>
 </Page>

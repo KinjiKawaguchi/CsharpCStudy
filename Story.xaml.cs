@@ -64,16 +64,20 @@ namespace CStudy
                     Button_Mail.Visibility = Visibility.Visible;
                     Button_Mail2.Visibility = Visibility.Visible;
                     break;
-                case Global.Story_amount:
-                    MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
-                    Application.Current.Shutdown();//アプリケーションシャットダウン
-                    break;
                 default:
-                    TextBox_Reply.Visibility= Visibility.Visible;
-                    Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
-                    Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
-                    Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視
-                    Method_MailOpen(Global.SaveData_Num, "F");
+                    if(Global.SaveData_Num == Global.Story_amount)
+                    {
+                        MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
+                        Application.Current.Shutdown();//アプリケーションシャットダウン
+                    }
+                    else
+                    {
+                        TextBox_Reply.Visibility = Visibility.Visible;
+                        Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
+                        Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
+                        Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視
+                        Method_MailOpen(Global.SaveData_Num, "F");
+                    }
                     break;
             }
         }
@@ -161,6 +165,5 @@ namespace CStudy
             Read.Close();
             return OutPut;
         }
-        
     }
 }
