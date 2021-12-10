@@ -25,6 +25,5 @@
         <Label x:Name="Label_PasswordConfirm" Content="PasswordConfirm" HorizontalAlignment="Left" Margin="753,420,0,0" VerticalAlignment="Top" Width="102" Height="26" Visibility="Hidden" Foreground="#DDFFFFFF"/>
         <PasswordBox x:Name="PasswordBox_PasswordConfirm" Height="22" HorizontalAlignment="Left" Margin="858,424,0,0" VerticalAlignment="Top" Width="210" Visibility="Hidden" Foreground="#FFE600FF" CaretBrush="White" BorderBrush="#89FF0000"/>
         <Button x:Name="Button_Register" Content="新規登録" HorizontalAlignment="Left" Margin="781,471,0,0" VerticalAlignment="Top" Width="286" Height="50" Click="RegisterButton_Click" Cursor="Hand" Visibility="Hidden"/>
-
     </Grid>
 </Page>
