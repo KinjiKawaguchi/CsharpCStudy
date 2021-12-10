@@ -27,7 +27,13 @@ namespace CStudy
             switch (Which_Select)
             {
                 case "Button_Select_Login":
-                    Label_Register_UserID.Visibility = Visibility.Hidden;//登録関係アイテムを非表示-------------------------------------------------------↓
+                    Label_UserID.Visibility = Visibility.Visible;
+                    TextBox_UserID.Visibility = Visibility.Visible;
+                    Label_Password.Visibility = Visibility.Visible;
+                    PasswordBox_Password.Visibility = Visibility.Visible;
+                    Label_PasswordConfirm.Visibility = Visibility.Hidden;
+                    PasswordBox_PasswordConfirm.Visibility = Visibility.Hidden;
+                    /*Label_Register_UserID.Visibility = Visibility.Hidden;//登録関係アイテムを非表示-------------------------------------------------------↓
                     TextBox_Register_UserID.Visibility = Visibility.Hidden;
                     Label_Register_Password.Visibility = Visibility.Hidden;
                     PasswordBox_Register_Password.Visibility = Visibility.Hidden;
@@ -38,10 +44,16 @@ namespace CStudy
                     TextBox_Login_UserID.Visibility = Visibility.Visible;
                     Label_Login_Password.Visibility = Visibility.Visible;
                     PasswordBox_Login_Password.Visibility = Visibility.Visible;
-                    Button_Login.Visibility = Visibility.Visible;//--------------------------------------------------------------------------------------↑
+                    Button_Login.Visibility = Visibility.Visible;//--------------------------------------------------------------------------------------↑*/
                     break;
                 case "Button_Select_Register":
-                    Label_Login_UserID.Visibility = Visibility.Hidden;//ログインアイテムを非表示----------------------------------------------------------↓
+                    Label_UserID.Visibility = Visibility.Visible;
+                    TextBox_UserID.Visibility = Visibility.Visible;
+                    Label_Password.Visibility = Visibility.Visible;
+                    PasswordBox_Password.Visibility = Visibility.Visible;
+                    Label_PasswordConfirm.Visibility = Visibility.Visible;
+                    PasswordBox_PasswordConfirm.Visibility = Visibility.Visible;
+                    /*Label_Login_UserID.Visibility = Visibility.Hidden;//ログインアイテムを非表示----------------------------------------------------------↓
                     TextBox_Login_UserID.Visibility = Visibility.Hidden;
                     Label_Login_Password.Visibility = Visibility.Hidden;
                     PasswordBox_Login_Password.Visibility = Visibility.Hidden;
@@ -52,26 +64,26 @@ namespace CStudy
                     PasswordBox_Register_Password.Visibility = Visibility.Visible;
                     Label_Register_PasswordConfirm.Visibility = Visibility.Visible;
                     PasswordBox_Register_PasswordConfirm.Visibility = Visibility.Visible;
-                    Button_Register.Visibility = Visibility.Visible;//-----------------------------------------------------------------------------------↑
+                    Button_Register.Visibility = Visibility.Visible;//-----------------------------------------------------------------------------------↑*/
                     break;
             }
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)////Loginボタンが押されたら
         {
-            string Login_UserID = TextBox_Login_UserID.Text;//入力されたIDを変数に代入
-            string Login_Password = PasswordBox_Login_Password.Password;//入力されたパスワードを変数に代入
-            string Path_Userdata = @"./data\user\" + Login_UserID;//UserIDからデータベースの保存パスを作成
-            if (Login_UserID != "")
+            string UserID = TextBox_UserID.Text;//入力されたIDを変数に代入
+            string Password = PasswordBox_Password.Password;//入力されたパスワードを変数に代入
+            string Path_Userdata = @"./data\user\" + UserID;//UserIDからデータベースの保存パスを作成
+            if (UserID != "")
             {
                 if (new DirectoryInfo(Path_Userdata).Exists)///ディレクトリデータ(ユーザデータ).存在するか　真：↑　偽：↓
                 {
                     Path_Userdata += @"\password.CStudy";//passwordファイルへのアクセスパスを作成
                     StreamReader ReadPassword = new StreamReader(Path_Userdata, Encoding.GetEncoding("Shift_JIS"));//パスワードファイルパスと、入力形式をReadPasswordに定義
                     string Check_Password = ReadPassword.ReadLine();//Cjeck_PassWordにパスワードを読み込んで代入。
-                    if (Login_Password == Check_Password)///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
+                    if (Password == Check_Password)///入力されたパスワードと保存されていたパスワードが一致したら　真：↑　偽：↓
                     {
-                        Method_Nowuser(Login_UserID);
+                        Method_Nowuser(UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
                     else
@@ -93,15 +105,15 @@ namespace CStudy
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)////Registerボタンが押されたら
         {
-            string Register_UserID = TextBox_Register_UserID.Text;//入力されたIDを変数に代入
-            string Register_Password = PasswordBox_Register_Password.Password.ToString();//入力されたパスワードを変数に代入
-            string Register_PasswordConfirm = PasswordBox_Register_PasswordConfirm.Password.ToString();//入力された再度入力パスワードを変数に代入
-            if (Register_UserID == "")
+            string UserID = TextBox_UserID.Text;//入力されたIDを変数に代入
+            string Password = PasswordBox_Password.Password.ToString();//入力されたパスワードを変数に代入
+            string PasswordConfirm = PasswordBox_PasswordConfirm.Password.ToString();//入力された再度入力パスワードを変数に代入
+            if (UserID == "")
             {
                 MessageBox.Show("UserIDが入力されていません。");
             }
 
-            if (Register_Password == "")
+            if (Password == "")
             {
                 MessageBox.Show("Passwordが入力されていません。");
             }
@@ -109,10 +121,10 @@ namespace CStudy
             else
             {
 
-                if (Register_Password == Register_PasswordConfirm)///入力されたパスワードが一致していたら　真：↑　偽：↓
+                if (Password == PasswordConfirm)///入力されたパスワードが一致していたら　真：↑　偽：↓
                 {
-                    string Path_Savedata = @"./data\user\" + Register_UserID + @"\save.CStudy";
-                    string Path_Userdata = @"./data\user\" + Register_UserID;//ユーザディレクトリ作成用ファイルパスを定義
+                    string Path_Savedata = @"./data\user\" + UserID + @"\save.CStudy";
+                    string Path_Userdata = @"./data\user\" + UserID;//ユーザディレクトリ作成用ファイルパスを定義
                     if (new DirectoryInfo(Path_Userdata).Exists)
                     {
                         MessageBox.Show("すでに存在するUserIDです。");
@@ -122,9 +134,9 @@ namespace CStudy
                     {
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
                         Path_Userdata += (@"\password.CStudy");//パスワードファイルのパスを定義
-                        File.AppendAllText(Path_Userdata, Register_Password + Environment.NewLine);//パスワードファイルにパスワードを保存
+                        File.AppendAllText(Path_Userdata, Password);//パスワードファイルにパスワードを保存
                         File.AppendAllText(Path_Savedata, "0");
-                        Method_Nowuser(Register_UserID);
+                        Method_Nowuser(UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
                 }
