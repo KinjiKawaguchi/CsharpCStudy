@@ -60,6 +60,8 @@ namespace CStudy
                     }
                     else
                     {
+                        Label_Mail.Visibility = Visibility.Visible;
+                        WB_Paiza.Visibility = Visibility.Visible;
                         TextBox_Reply.Visibility = Visibility.Visible;
                         Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
                         Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
@@ -124,7 +126,8 @@ namespace CStudy
             if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))///返信が期待された値なら
             {
                 string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
-                File.AppendAllText(Path_Savedata, "\n" + Global.SaveData_Num + 1);//セーブデータを1進める
+                int NextNum = Global.SaveData_Num + 1;
+                File.AppendAllText(Path_Savedata, "\n" + NextNum);//セーブデータを1進める
                 Method_MailOpen(Global.SaveData_Num, "L");//クリアメッセージ（メール）を表示
                 Button_Reply.Visibility = Visibility.Hidden;//返信ボタンを不可視にする
                 Button_NextStory.Visibility = Visibility.Visible;//次のステージに進むボタンを可視化
@@ -140,6 +143,30 @@ namespace CStudy
         private void Button_Try_Click(object sender, RoutedEventArgs e)////リトライまたは次のステージボタンが押されたら
         {
             Play_Game();
+        }
+        
+        private void WinMark_Click(object sender, RoutedEventArgs e)
+        {
+            if(Button_Shutdown.Visibility == Visibility.Visible)
+            {
+                Button_Shutdown.Visibility = Visibility.Hidden;
+                Button_Back.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Button_Shutdown.Visibility = Visibility.Visible;
+                Button_Back.Visibility = Visibility.Visible;
+            }
+        }
+        
+        private void Button_Shutdown_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Shutdown();
+        }
+        
+        private void Button_Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationServive.Navagate(ModeSelect());
         }
 
         public void Method_MailOpen(int SaveData_Num, string MailType)
@@ -164,14 +191,9 @@ namespace CStudy
                     OutPut = Read.ReadLine();
                 }
             }
-
             Read.Close();
             return OutPut;
         }
 
-        private void WinMark_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
