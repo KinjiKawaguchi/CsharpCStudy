@@ -24,12 +24,6 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-            //グローバル変数の定義--------------------------------------------------------------------------------------------------------
-            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");
-            Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
-            Global.SaveData_Num = int.Parse(Global.SaveData);
-            Global.Story_amount = Directory.GetFiles(@"./data\story\answer", "*", SearchOption.TopDirectoryOnly).Length;
-            //----------------------------------------------------------------------------------------------------------------------------
             Play_Game();
         }
 
@@ -37,24 +31,26 @@ namespace CStudy
         private readonly Queue<string> lineQueue = new Queue<string>();
         public void Play_Game()
         {
+            //グローバル変数の定義--------------------------------------------------------------------------------------------------------
+            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");
+            Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
+            Global.SaveData_Num = int.Parse(Global.SaveData);
+            Global.Story_amount = Directory.GetFiles(@"./data\story\answer", "*", SearchOption.TopDirectoryOnly).Length;
+            Console.WriteLine(Global.Story_amount);
+            //----------------------------------------------------------------------------------------------------------------------------
             switch (Global.SaveData_Num)
             {
                 case 0:
                     Label_Boot.Visibility = Visibility.Visible;
                     string Path_File = (@"./data\story\boot.CStudy");
-                    // 表示データクリア
-                    lineQueue.Clear();
-                    // ファイル読み込み
-                    string[] file = System.IO.File.ReadAllLines(Path_File);
-                    // 表示データをキューに格納
-                    foreach (string line in file)
-                    {
-                        lineQueue.Enqueue(line);
-                    }
-                    // タイマー開始
-                    timer1.Interval = new TimeSpan(0, 0, 0, 0, 250);
-                    timer1.Tick += timer1_Tick;
+                    lineQueue.Clear();//表示キュークリア
+                    string[] file = System.IO.File.ReadAllLines(Path_File);//ファイル読み込み
+                    foreach (string line in file) lineQueue.Enqueue(line);// 表示データをキューに格納
+                    // タイマー開始---------------------------------
+                    timer1.Interval = new TimeSpan(0, 0, 0, 0, 50);
+                    timer1.Tick += Timer1_Tick;
                     timer1.Start();
+                    //----------------------------------------------
                     break;
                 default:
                     if (Global.SaveData_Num == Global.Story_amount)
@@ -73,7 +69,7 @@ namespace CStudy
                     break;
             }
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (lineQueue.Count > 0)
             {
@@ -114,7 +110,8 @@ namespace CStudy
             Button_Mail2.Visibility = Visibility.Hidden;
             Button_Paiza.Visibility = Visibility.Hidden;
             string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
-            File.AppendAllText(Path_Savedata, "\n" + Global.SaveData_Num + 1);//セーブデータを1進める
+            int NextNum = Global.SaveData_Num + 1;
+            File.AppendAllText(Path_Savedata, "\n" + NextNum);//セーブデータを1進める
             Method_MailOpen(Global.SaveData_Num, "L");//クリアメッセージ（メール）を表示
             Button_NextStory.Visibility = Visibility.Visible;//次のステージに進むボタンを可視化
             WB_Paiza.Visibility = Visibility.Visible;
@@ -170,6 +167,11 @@ namespace CStudy
 
             Read.Close();
             return OutPut;
+        }
+
+        private void WinMark_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
