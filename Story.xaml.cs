@@ -166,7 +166,7 @@ namespace CStudy
         
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationServive.Navagate(ModeSelect());
+            NavigationServive.Navagate(new ModeSelect());
         }
 
         public void Method_MailOpen(int SaveData_Num, string MailType)
