@@ -10,16 +10,15 @@
       Title="Page2">
     <Grid OpacityMask="Black" Background="Black">
         <Label x:Name="Label_Boot" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden" FontSize="9"/>
-        <Button HorizontalAlignment="Left" Margin="0,1038,0,0" VerticalAlignment="Top" Height="42" Width="54" BorderBrush="{x:Null}" Click="WinMark_Click" Cursor="Hand">
+        <Button x:Name="WinMark" HorizontalAlignment="Left" Margin="0,1038,0,0" VerticalAlignment="Top" Height="42" Width="54" BorderBrush="{x:Null}" Click="WinMark_Click" Cursor="Hand" Visibility="Hidden">
             <Button.Background>
                 <ImageBrush ImageSource="/winmark.PNG"/>
             </Button.Background>
             <Button Content="Button"/>
         </Button>
-        <Image Source="/taskbar.png" Stretch="Fill"/>
-        <WebBrowser x:Name="WB_Paiza" Source="https://paiza.io/ja/projects/new" Width="952" Margin="0,0,968,0" Visibility="Hidden"/>
-        <TextBlock x:Name="TextBlock_Mail" HorizontalAlignment="Left" Margin="952,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="1080" Width="968" FontSize="20" Foreground="#FF1FFF00" Background="Black" Visibility="Hidden"/>
-        <TextBox x:Name="TextBox_Reply" HorizontalAlignment="Left" Margin="1017,1048,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="823" Foreground="#FF2BFF00" SelectionBrush="#FF00FF10" Background="#FF696262" Visibility="Hidden"/>
+        <WebBrowser x:Name="WB_Paiza" Source="https://paiza.io/ja/projects/new" Width="952" Margin="0,0,968,40" Visibility="Visible"/>
+        <TextBlock x:Name="TextBlock_Mail" HorizontalAlignment="Left" Margin="952,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="1000" Width="968" FontSize="20" Foreground="#FF1FFF00" Background="Black" Visibility="Hidden"/>
+        <TextBox x:Name="TextBox_Reply" HorizontalAlignment="Left" Margin="1010,997,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="823" Foreground="#FF2BFF00" SelectionBrush="#FF00FF10" Background="#FF696262" Visibility="Hidden"/>
         <Button x:Name="Button_Reply" Content="Reply" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Reply_Click" Visibility="Hidden"/>
         <Button x:Name="Button_Retry" Content="Retry" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Try_Click" Cursor="Hand" Visibility="Hidden"/>
         <Button x:Name="Button_NextStory" Content="Next" HorizontalAlignment="Left" Margin="1845,1048,0,0" VerticalAlignment="Top" Click="Button_Try_Click" Visibility="Hidden" Cursor="Hand"/>
@@ -35,5 +34,6 @@
         </Button>
         <Button x:Name="Button_Paiza_Download" Content="Button" HorizontalAlignment="Left" Margin="1428,642,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Paiza_Download_Click" Visibility="Hidden"/>
         <Button x:Name="Button_Paiza" Content="Button" HorizontalAlignment="Left" Margin="10,256,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Paiza_Click" Visibility="Hidden"/>
+        <Image HorizontalAlignment="Left" Height="1080" Margin="-8,1041,0,0" VerticalAlignment="Top" Width="1920" Source="/taskbar.png" RenderTransformOrigin="0.504,0.574"/>
     </Grid>
 </Page>
