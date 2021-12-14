@@ -60,7 +60,7 @@ namespace CStudy
                     }
                     else
                     {
-                        Label_Mail.Visibility = Visibility.Visible;
+                        TextBlock_Mail.Visibility = Visibility.Visible;
                         WB_Paiza.Visibility = Visibility.Visible;
                         TextBox_Reply.Visibility = Visibility.Visible;
                         Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
@@ -161,12 +161,12 @@ namespace CStudy
         
         private void Button_Shutdown_Click(object sender, RoutedEventArgs e)
         {
-            Application.Shutdown();
+            Application.Current.Shutdown();
         }
         
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationServive.Navagate(new ModeSelect());
+            NavigationService.Navigate(new ModeSelect());
         }
 
         public void Method_MailOpen(int SaveData_Num, string MailType)
