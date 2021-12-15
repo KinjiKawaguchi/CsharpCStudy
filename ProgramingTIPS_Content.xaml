@@ -9,6 +9,11 @@
       Background="White"
       Title="Page2">
     <Grid>
+        <Image Source="./TIPSbook.jpg" Stretch="fill" Opacity="0.5">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/TIPSbook.jpg"/>
+            </Image.OpacityMask>
+        </Image>
         <Border BorderBrush="Black" Background="#ee82ee"  BorderThickness="1" HorizontalAlignment="Center" Height="180" VerticalAlignment="Top" Width="1920">
             <Label x:Name="Label_ProgramingTIPS_Title" Content="ProgrammingTIPS Title" FontSize="80" HorizontalAlignment="Left" Height="180" Margin="9,0,0,0" VerticalAlignment="Center" Width="884"/>
 

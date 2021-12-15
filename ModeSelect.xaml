@@ -10,7 +10,7 @@
       Title="Page2">
     <Grid>
         <Image Source="/modeselect.jpg" Stretch="Fill"/>
-        <Button x:Name="Button_Navi_Exit" Content="Exit" HorizontalAlignment="Left" Margin="1780,1010,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Navi_Exit_Click" Height="70" Width="140"/>
+        <Button x:Name="Button_Navi_Exit" Content="Exit" HorizontalAlignment="Left" Margin="1780,1010,0,0" VerticalAlignment="Top" Cursor="Hand" Click="Button_Navi_Exit_Click" Height="70" Width="140" Background="Red"/>
         <Button x:Name="Button_Navi_LoginRegister" Content="Back" HorizontalAlignment="Left" Margin="1635,1010,0,0" VerticalAlignment="Top" Click="Button_Navi_LoginRegister_Click" Cursor="Hand" Height="70" Width="140"/>
         <Button x:Name="Button_Navi_ProgramingTIPS" Content="ProgramingTIPS" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Click="Button_Navi_ProgramingTIPS_Click" Cursor="Hand" Height="50" Width="300"/>
         <Button x:Name="Button_Navi_Story" Content="Story" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Click="Button_Navi_Story_Click" Height="50" Width="300"/>

@@ -56,10 +56,12 @@ namespace CStudy
                     if (Global.SaveData_Num == Global.Story_amount)
                     {
                         MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
-                        Application.Current.Shutdown();//アプリケーションシャットダウン
+                        NavigationService.Navigate(new ModeSelect());
                     }
                     else
                     {
+                        Image_Taskbar.Visibility = Visibility.Visible;
+                        Button_WindowsMark.Visibility = Visibility.Visible;
                         TextBlock_Mail.Visibility = Visibility.Visible;
                         WB_Paiza.Visibility = Visibility.Visible;
                         TextBox_Reply.Visibility = Visibility.Visible;
@@ -85,6 +87,8 @@ namespace CStudy
                 Label_Boot.Visibility = Visibility.Hidden;
                 Button_Mail.Visibility = Visibility.Visible;
                 Button_Mail2.Visibility = Visibility.Visible;
+                Image_Taskbar.Visibility = Visibility.Visible;
+                Button_WindowsMark.Visibility = Visibility.Visible;
             }
         }
 
@@ -149,11 +153,13 @@ namespace CStudy
         {
             if(Button_Shutdown.Visibility == Visibility.Visible)
             {
+                WB_Paiza.Margin = new Thickness(0, 0, 968, 40);
                 Button_Shutdown.Visibility = Visibility.Hidden;
                 Button_Back.Visibility = Visibility.Hidden;
             }
             else
             {
+                WB_Paiza.Margin = new Thickness(0, 0, 968, 103);
                 Button_Shutdown.Visibility = Visibility.Visible;
                 Button_Back.Visibility = Visibility.Visible;
             }
