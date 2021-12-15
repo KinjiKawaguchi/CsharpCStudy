@@ -25,6 +25,7 @@ namespace CStudy
         {
             InitializeComponent();////おまじない
             Play_Game();
+            bgm.Play();
         }
 
         private readonly DispatcherTimer timer1 = new DispatcherTimer();
@@ -45,7 +46,10 @@ namespace CStudy
                     string Path_File = (@"./data\story\boot.CStudy");
                     lineQueue.Clear();//表示キュークリア
                     string[] file = System.IO.File.ReadAllLines(Path_File);//ファイル読み込み
-                    foreach (string line in file) lineQueue.Enqueue(line);// 表示データをキューに格納
+                    foreach (string line in file)
+                    {
+                        lineQueue.Enqueue(line);// 表示データをキューに格納
+                    }
                     // タイマー開始---------------------------------
                     timer1.Interval = new TimeSpan(0, 0, 0, 0, 50);
                     timer1.Tick += Timer1_Tick;
@@ -148,10 +152,10 @@ namespace CStudy
         {
             Play_Game();
         }
-        
+
         private void WinMark_Click(object sender, RoutedEventArgs e)
         {
-            if(Button_Shutdown.Visibility == Visibility.Visible)
+            if (Button_Shutdown.Visibility == Visibility.Visible)
             {
                 WB_Paiza.Margin = new Thickness(0, 0, 968, 40);
                 Button_Shutdown.Visibility = Visibility.Hidden;
@@ -164,12 +168,12 @@ namespace CStudy
                 Button_Back.Visibility = Visibility.Visible;
             }
         }
-        
+
         private void Button_Shutdown_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        
+
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ModeSelect());

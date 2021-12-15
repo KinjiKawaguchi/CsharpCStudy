@@ -9,6 +9,7 @@
       Background="White"
       Title="Page2">
     <Grid OpacityMask="Black" Background="Black">
+        <MediaElement Source="/bgm.wmv" Name="bgm" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill" Margin="1683,899,83,74" Visibility="Hidden" Volume="50"/>
         <Label x:Name="Label_Boot" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden" FontSize="9"/>
         <Button x:Name="Button_Shutdown" Content="ゲーム終了" HorizontalAlignment="Left" Margin="0,1008,0,0" VerticalAlignment="Top" Click="Button_Shutdown_Click" Visibility="Hidden" Cursor="Hand" Width="234" Background="#FFF90909" BorderBrush="{x:Null}"/>
         <Button x:Name="Button_Back" Content="モード選択へ戻る" HorizontalAlignment="Left" Margin="0,977,0,0" VerticalAlignment="Top" Click="Button_Back_Click" Visibility="Hidden" Width="234" Background="#FF0056FF" BorderBrush="{x:Null}"/>
@@ -40,5 +41,6 @@
                 <ImageBrush ImageSource="/icon_codingapp.png"/>
             </Button.Background>
         </Button>
+        <MediaElement HorizontalAlignment="Left" Height="100" Margin="1794,135,0,0" VerticalAlignment="Top" Width="124" Visibility="Hidden"/>
     </Grid>
 </Page>
