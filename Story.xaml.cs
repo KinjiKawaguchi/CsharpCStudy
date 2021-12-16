@@ -45,7 +45,8 @@ namespace CStudy
             Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");
             Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
             Global.SaveData_Num = int.Parse(Global.SaveData);
-            Global.Story_amount = Directory.GetFiles(@"./data\story\answer", "*", SearchOption.TopDirectoryOnly).Length;
+            string Story_amount = Method_ReadFile(@"./data\story\Number_of_Story.CStudy", "Line");
+            Global.Story_amount = int.Parse(Story_amount);
             Console.WriteLine(Global.Story_amount);
             //----------------------------------------------------------------------------------------------------------------------------
             switch (Global.SaveData_Num)
@@ -66,7 +67,7 @@ namespace CStudy
                     //----------------------------------------------
                     break;
                 default:
-                    if (Global.SaveData_Num == Global.Story_amount)
+                    if (Global.SaveData_Num == Global.Story_amount + 1)
                     {
                         MessageBox.Show("体験版はここまでです。続きは製品版でお楽しみください。");//ここまでメッセージをメッセージボックスに表示
                         NavigationService.Navigate(new ModeSelect());
