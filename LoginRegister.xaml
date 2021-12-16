@@ -12,6 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
         </Grid.RowDefinitions>
+        <MediaElement Grid.Row="0" x:Name="MediaAudio"/>
         <Image Source="/loginregister.jpg" Stretch="Fill"/>
         <Label x:Name="Label_LoginRegister_Title" Content="CStudy" HorizontalAlignment="Left" Margin="198,150,0,0" VerticalAlignment="Top" Height="112" Width="456" FontFamily="Arial Black" FontSize="72" FontWeight="Bold" FontStyle="Normal" AutomationProperties.IsColumnHeader="True" Background="#00000000" Foreground="#DDFFFFFF"/>
         <Button x:Name="Button_Select_Login" Content="ログイン" HorizontalAlignment="Left" Margin="200,0,0,744" VerticalAlignment="Bottom" Width="284" Height="50" Click="Button_Select_Click" RenderTransformOrigin="0.486,0.562" Cursor="Hand" FontFamily="Arial Black" FontSize="24" Background="#FFBD62FF" BorderBrush="#FFBD62FF"/>

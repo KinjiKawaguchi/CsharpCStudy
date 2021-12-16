@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,9 +24,14 @@ namespace CStudy
         private void Button_Select_Click(object sender, RoutedEventArgs e)
         {
             string Which_Select = ((Button)sender).Name.ToString();
+            MediaAudio.LoadedBehavior = MediaState.Stop;
+            MediaAudio.Source = new Uri(@"./bgm.mp3", UriKind.Relative);
             switch (Which_Select)
             {
+
                 case "Button_Select_Login":
+                    MediaAudio.LoadedBehavior = MediaState.Manual;
+                    MediaAudio.Play();
                     Label_UserID.Visibility = Visibility.Visible;
                     TextBox_UserID.Visibility = Visibility.Visible;
                     Label_Password.Visibility = Visibility.Visible;
@@ -36,6 +42,9 @@ namespace CStudy
                     Button_Register.Visibility = Visibility.Hidden;
                     break;
                 case "Button_Select_Register":
+                    // 音声再生を停止します。
+                    MediaAudio.LoadedBehavior = MediaState.Manual;
+                    MediaAudio.Stop();
                     Label_UserID.Visibility = Visibility.Visible;
                     TextBox_UserID.Visibility = Visibility.Visible;
                     Label_Password.Visibility = Visibility.Visible;

@@ -24,14 +24,17 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
+            MediaAudio.LoadedBehavior = MediaState.Stop;
+            MediaAudio.Source = new Uri(@"bgm.wmv", UriKind.Relative);
             Play_Game();
-            bgm.Play();
         }
 
         private readonly DispatcherTimer timer1 = new DispatcherTimer();
         private readonly Queue<string> lineQueue = new Queue<string>();
         public void Play_Game()
         {
+            MediaAudio.LoadedBehavior = MediaState.Manual;
+            MediaAudio.Play();
             //グローバル変数の定義--------------------------------------------------------------------------------------------------------
             Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");
             Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
