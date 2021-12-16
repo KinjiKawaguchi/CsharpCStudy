@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Media;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-
+//using WMPLib;
 namespace CStudy
 {
     /// <summary>
@@ -24,8 +25,13 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-            MediaAudio.LoadedBehavior = MediaState.Stop;
-            MediaAudio.Source = new Uri(@"bgm.wmv", UriKind.Relative);
+            /*WindowsMediaPlayer _mediaPlayer = new WindowsMediaPlayer();
+            _mediaPlayer.URL = @"bgm.mp3";// mp3も使用可能
+            _mediaPlayer.controls.play();*/
+
+
+            /*MediaAudio.LoadedBehavior = MediaState.Stop;
+            MediaAudio.Source = new Uri(@"bgm.wmv", UriKind.Relative);*/
             Play_Game();
         }
 
@@ -33,8 +39,8 @@ namespace CStudy
         private readonly Queue<string> lineQueue = new Queue<string>();
         public void Play_Game()
         {
-            MediaAudio.LoadedBehavior = MediaState.Manual;
-            MediaAudio.Play();
+            /*MediaAudio.LoadedBehavior = MediaState.Manual;
+            MediaAudio.Play();*/
             //グローバル変数の定義--------------------------------------------------------------------------------------------------------
             Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");
             Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
