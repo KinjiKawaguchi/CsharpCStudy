@@ -6,7 +6,6 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using WMPLib;
 namespace CStudy
 {
     /// <summary>
@@ -25,9 +24,6 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-            WindowsMediaPlayer _mediaPlayer = new WindowsMediaPlayer();
-            _mediaPlayer.URL = @"bgm.mp3";// mp3も使用可能
-            _mediaPlayer.controls.play();
 
 
             /*MediaAudio.LoadedBehavior = MediaState.Stop;

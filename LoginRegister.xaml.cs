@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Microsoft.SmallBasic.Library;
 
 
 namespace CStudy
@@ -14,11 +14,14 @@ namespace CStudy
     /// <summary>
     /// Page1.xaml の相互作用ロジック
     /// </summary>
+    /// 
     public partial class LoginRegister : Page
     {
+
         public LoginRegister()
         {
             InitializeComponent();//おまじない
+            Sound.Play(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\LoginRegister.mp3");
         }
 
         private void Button_Select_Click(object sender, RoutedEventArgs e)
@@ -114,8 +117,8 @@ namespace CStudy
                     {
                         Directory.CreateDirectory(Path_Userdata);//UserIDと同値のディレクリを作成
                         Path_Userdata += (@"\password.CStudy");//パスワードファイルのパスを定義
-                        File.AppendAllText(Path_Userdata, Password);//パスワードファイルにパスワードを保存
-                        File.AppendAllText(Path_Savedata, "0");
+                        System.IO.File.AppendAllText(Path_Userdata, Password);//パスワードファイルにパスワードを保存
+                        System.IO.File.AppendAllText(Path_Savedata, "0");
                         Method_Nowuser(UserID);
                         NavigationService.Navigate(new ModeSelect());//モード選択画面に遷移
                     }
@@ -130,8 +133,8 @@ namespace CStudy
         public void Method_Nowuser(string UserID)
         {
             string Path_NowUser = @"./data\NowUser.CStudy";
-            File.Delete(Path_NowUser);
-            File.AppendAllText(Path_NowUser, UserID);//パスワードファイルにパスワードを保存
+            System.IO.File.Delete(Path_NowUser);
+            System.IO.File.AppendAllText(Path_NowUser, UserID);//パスワードファイルにパスワードを保存
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)////Exitボタンが押されたら
