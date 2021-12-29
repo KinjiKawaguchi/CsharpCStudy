@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-//using WMPLib;
+using WMPLib;
 namespace CStudy
 {
     /// <summary>
@@ -25,9 +25,9 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-            /*WindowsMediaPlayer _mediaPlayer = new WindowsMediaPlayer();
+            WindowsMediaPlayer _mediaPlayer = new WindowsMediaPlayer();
             _mediaPlayer.URL = @"bgm.mp3";// mp3も使用可能
-            _mediaPlayer.controls.play();*/
+            _mediaPlayer.controls.play();
 
 
             /*MediaAudio.LoadedBehavior = MediaState.Stop;
@@ -47,7 +47,6 @@ namespace CStudy
             Global.SaveData_Num = int.Parse(Global.SaveData);
             string Story_amount = Method_ReadFile(@"./data\story\Number_of_Story.CStudy", "Line");
             Global.Story_amount = int.Parse(Story_amount);
-            Console.WriteLine(Global.Story_amount);
             //----------------------------------------------------------------------------------------------------------------------------
             switch (Global.SaveData_Num)
             {
@@ -76,7 +75,7 @@ namespace CStudy
                     {
                         Image_Taskbar.Visibility = Visibility.Visible;
                         Button_WindowsMark.Visibility = Visibility.Visible;
-                        TextBlock_Mail.Visibility = Visibility.Visible;
+                        TextBlock_MailContent.Visibility = Visibility.Visible;
                         WB_Paiza.Visibility = Visibility.Visible;
                         TextBox_Reply.Visibility = Visibility.Visible;
                         Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
@@ -109,7 +108,7 @@ namespace CStudy
         //----------------------------------------------------------------------------------------------------------------------------
         private void Button_Open_Mail_Click(object sender, RoutedEventArgs e)
         {
-            TextBlock_Mail.Visibility = Visibility.Visible;
+            TextBlock_MailContent.Visibility = Visibility.Visible;
             //TextBox_Reply.Visibility = Visibility.Visible;
             //Button_Reply.Visibility = Visibility.Visible;
             Method_MailOpen(Global.SaveData_Num, "F");
@@ -152,7 +151,7 @@ namespace CStudy
             }
             else///期待される値と一致していなかったら
             {
-                TextBlock_Mail.Text = "値が違うようだぞ。";//メールの欄に値が違うエラーを表示
+                TextBlock_MailContent.Text = "値が違うようだぞ。";//メールの欄に値が違うエラーを表示
                 Button_Reply.Visibility = Visibility.Hidden;//リプライボタンを不可視
                 Button_Retry.Visibility = Visibility.Visible;//リトライボタンを可視
             }
@@ -193,7 +192,7 @@ namespace CStudy
         {
             string Path_MailData = @"./data\story\mail\" + SaveData_Num + @"\" + MailType + @".CStudy";
             Method_ReadFile(Path_MailData, "All");
-            TextBlock_Mail.Text = Method_ReadFile(Path_MailData, "All");
+            TextBlock_MailContent.Text = Method_ReadFile(Path_MailData, "All");
         }
 
         public string Method_ReadFile(string Path_File, string How)
