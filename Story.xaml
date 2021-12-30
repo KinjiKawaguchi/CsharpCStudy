@@ -6,24 +6,25 @@
       xmlns:local="clr-namespace:CStudy"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Background="White"
+      Background="Black"
       Title="Page2">
-    <Grid OpacityMask="Black" Background="Black">
-        <Label x:Name="Label_Boot" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden" FontSize="9"/>
+    <Grid OpacityMask="Black" Background="Black" Visibility="Visible">
+        <MediaElement x:Name="ME_Boot" Source="/PCBoot.mp4" UnloadedBehavior="Manual" Visibility="Hidden" Volume="0"/>
+        <Label x:Name="Label_Boot" HorizontalAlignment="Center" VerticalAlignment="Top" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden" FontSize="10"/>
         <Button x:Name="Button_Shutdown" Content="ゲーム終了" HorizontalAlignment="Left" Margin="0,1008,0,0" VerticalAlignment="Top" Click="Button_Shutdown_Click" Visibility="Hidden" Cursor="Hand" Width="234" Background="#FFF90909" BorderBrush="{x:Null}"/>
         <Button x:Name="Button_Back" Content="モード選択へ戻る" HorizontalAlignment="Left" Margin="0,977,0,0" VerticalAlignment="Top" Click="Button_Back_Click" Visibility="Hidden" Width="234" Background="#FF0056FF" BorderBrush="{x:Null}"/>
-        <Image x:Name="Image_Taskbar" HorizontalAlignment="Center" Height="40" Margin="0,1040,0,0" VerticalAlignment="Top" Width="1920" Source="/taskbar.png" Visibility="Visible"/>
+        <Image x:Name="Image_Taskbar" HorizontalAlignment="Center" Height="40" Margin="0,1040,0,0" VerticalAlignment="Top" Width="1920" Source="/taskbar.png" Visibility="Hidden"/>
         <Button x:Name="Button_WindowsMark" Content="" HorizontalAlignment="Left" Margin="0,1040,0,0" VerticalAlignment="Top" Height="40" Width="51" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Hand" Click="WinMark_Click" Visibility="Hidden" FontSize="11"/>
-        <Button x:Name="Button_Navi_Reply" Content="返信" HorizontalAlignment="Left" Margin="952,1000,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.52,1.125" Width="351"/>
-        <Label x:Name="Label_MailTitle" Content="Label_MailTitle" HorizontalAlignment="Left" Margin="952,0,0,0" VerticalAlignment="Top" Height="100" Width="968" Background="White" FontSize="20"/>
-        <TextBlock x:Name="TextBlock_MailContent" HorizontalAlignment="Left" Margin="952,100,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="940" Width="968" FontSize="20" Foreground="#FF1FFF00" Visibility="Visible" Background="{DynamicResource MaterialDesignLightSeparatorBackground}"/>
+        <Label x:Name="Label_MailTitle" Content="Label_MailTitle" HorizontalAlignment="Left" Margin="952,0,0,0" VerticalAlignment="Top" Height="100" Width="968" Background="White" FontSize="20" Visibility="Hidden"/>
+        <TextBlock x:Name="TextBlock_MailContent" HorizontalAlignment="Left" Margin="952,100,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="940" Width="968" FontSize="20" Foreground="#FF1FFF00" Visibility="Hidden" Background="{DynamicResource MaterialDesignLightSeparatorBackground}"/>
+        <Button x:Name="Button_Navi_Reply" Content="返信" HorizontalAlignment="Left" Margin="952,1000,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.52,1.125" Width="351" Visibility="Hidden"/>
         <WebBrowser x:Name="WB_Paiza" Source="https://paiza.io/ja/projects/new" Width="952" Margin="0,0,968,40" Visibility="Hidden"/>
-        <Label x:Name="Label_AddInfo" Content="情報を追加する：" HorizontalAlignment="Left" Margin="1010,45,0,0" VerticalAlignment="Top" Height="55" Width="910" FontSize="25" Foreground="#DDFFFFFF" d:IsHidden="True"/>
-        <TextBox x:Name="TextBox_Reply" HorizontalAlignment="Left" Margin="1010,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="910" Height="43" BorderBrush="#FFFF0303" Background="#FF1B1B1F" Foreground="#FF2AD81B" FontSize="20" d:IsHidden="True"/>
-        <Button x:Name="Button_Reply" Content="送信" HorizontalAlignment="Left" Margin="1010,182,0,0" VerticalAlignment="Top" Width="540" d:IsHidden="True"/>
+        <Label x:Name="Label_AddInfo" Content="情報を追加する：" HorizontalAlignment="Left" Margin="1010,45,0,0" VerticalAlignment="Top" Height="55" Width="910" FontSize="25" Foreground="#DDFFFFFF" Visibility="Hidden"/>
+        <TextBox x:Name="TextBox_Reply" HorizontalAlignment="Left" Margin="1010,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="910" Height="43" BorderBrush="#FFFF0303" Background="#FF1B1B1F" Foreground="#FF2AD81B" FontSize="20" Visibility="Hidden"/>
+        <Button x:Name="Button_Reply" Content="送信" HorizontalAlignment="Left" Margin="1010,182,0,0" VerticalAlignment="Top" Width="540" Visibility="Hidden"/>
         <Button x:Name="Button_Retry" Content="Retry" HorizontalAlignment="Left" Margin="1843,992,0,0" VerticalAlignment="Top" Click="Button_Try_Click" Cursor="Hand" Visibility="Hidden"/>
         <Button x:Name="Button_NextStory" Content="Next" HorizontalAlignment="Left" Margin="1845,992,0,0" VerticalAlignment="Top" Click="Button_Try_Click" Visibility="Hidden" Cursor="Hand"/>
-        <Button x:Name="Button_Navi_Mail" Content="戻る" HorizontalAlignment="Left" Margin="1010,0,0,0" VerticalAlignment="Top" Width="540" d:IsHidden="True"/>
+        <Button x:Name="Button_Navi_Mail" Content="戻る" HorizontalAlignment="Left" Margin="1010,0,0,0" VerticalAlignment="Top" Width="540" Visibility="Hidden"/>
         <Button x:Name="Button_Mail" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="125" Width="125" Margin="10,10,0,0" BorderBrush="{x:Null}" Click="Button_Open_Mail_Click" Cursor="Hand" Visibility="Hidden">
             <Button.Background>
                 <ImageBrush ImageSource="/icon_mail.png"/>

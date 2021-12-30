@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SmallBasic.Library;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Media;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using System.Threading;
 namespace CStudy
 {
     /// <summary>
@@ -32,6 +34,7 @@ namespace CStudy
         }
 
         private readonly DispatcherTimer timer1 = new DispatcherTimer();
+        private readonly DispatcherTimer timer = new DispatcherTimer();
         private readonly Queue<string> lineQueue = new Queue<string>();
         public void Play_Game()
         {
@@ -47,6 +50,13 @@ namespace CStudy
             switch (Global.SaveData_Num)
             {
                 case 0:
+                    ME_Boot.Visibility=Visibility.Visible;
+                    ME_Boot.LoadedBehavior = MediaState.Manual;
+                    ME_Boot.Source = new Uri(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\VIDEO\PCBoot.mp4");
+                    Sound.Play(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\Sound_PCBoot.mp3");
+                    ME_Boot.Play();
+                    
+                    /*
                     Label_Boot.Visibility = Visibility.Visible;
                     string Path_File = (@"./data\story\boot.CStudy");
                     lineQueue.Clear();//表示キュークリア
@@ -60,6 +70,7 @@ namespace CStudy
                     timer1.Tick += Timer1_Tick;
                     timer1.Start();
                     //----------------------------------------------
+                    */
                     break;
                 default:
                     if (Global.SaveData_Num == Global.Story_amount + 1)
@@ -126,7 +137,7 @@ namespace CStudy
             Button_Paiza.Visibility = Visibility.Hidden;
             string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
             int NextNum = Global.SaveData_Num + 1;
-            File.AppendAllText(Path_Savedata, "\n" + NextNum);//セーブデータを1進める
+            System.IO.File.AppendAllText(Path_Savedata, "\n" + NextNum);//セーブデータを1進める
             Method_MailOpen(Global.SaveData_Num, "L");//クリアメッセージ（メール）を表示
             Button_NextStory.Visibility = Visibility.Visible;//次のステージに進むボタンを可視化
             WB_Paiza.Visibility = Visibility.Visible;
@@ -140,7 +151,7 @@ namespace CStudy
             {
                 string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
                 int NextNum = Global.SaveData_Num + 1;
-                File.AppendAllText(Path_Savedata, "\n" + NextNum);//セーブデータを1進める
+                System.IO.File.AppendAllText(Path_Savedata, "\n" + NextNum);//セーブデータを1進める
                 Method_MailOpen(Global.SaveData_Num, "L");//クリアメッセージ（メール）を表示
                 Button_Reply.Visibility = Visibility.Hidden;//返信ボタンを不可視にする
                 Button_NextStory.Visibility = Visibility.Visible;//次のステージに進むボタンを可視化
@@ -183,6 +194,18 @@ namespace CStudy
         {
             NavigationService.Navigate(new ModeSelect());
         }
+
+        //------------------------------------------------------------------------------------------------------------------------------
+        public void Method_Timer(int d ,int h ,int m ,int s ,int ms,int times)
+        {
+            timer.Interval = new TimeSpan(d, h, m, s, ms);
+            for(int i = 0; i < times; i++)
+            {
+                timer.Start();
+                timer.Stop();
+            }
+        }
+        //------------------------------------------------------------------------------------------------------------------------------
 
         public void Method_MailOpen(int SaveData_Num, string MailType)
         {
