@@ -196,6 +196,7 @@ namespace CStudy
         }
 
         //------------------------------------------------------------------------------------------------------------------------------
+        /*
         public void Method_Timer(int d ,int h ,int m ,int s ,int ms,int times)
         {
             timer.Interval = new TimeSpan(d, h, m, s, ms);
@@ -204,7 +205,7 @@ namespace CStudy
                 timer.Start();
                 timer.Stop();
             }
-        }
+        }*/
         //------------------------------------------------------------------------------------------------------------------------------
 
         public void Method_MailOpen(int SaveData_Num, string MailType)
