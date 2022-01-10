@@ -10,7 +10,7 @@
       Title="Page2">
     <Grid OpacityMask="Black" Background="Black" Visibility="Visible">
         <MediaElement x:Name="ME_Boot" Source="/PCBoot.mp4" UnloadedBehavior="Manual" Visibility="Hidden" Volume="0"/>
-        <Label x:Name="Label_Boot" HorizontalAlignment="Center" VerticalAlignment="Top" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden" FontSize="10"/>
+        <Label x:Name="Label_FirstMail" HorizontalAlignment="Center" VerticalAlignment="Top" Height="1080" Width="1920" Foreground="#DDFFFFFF" FontFamily="Bahnschrift SemiBold" Visibility="Hidden" FontSize="10"/>
         <Button x:Name="Button_Shutdown" Content="ゲーム終了" HorizontalAlignment="Left" Margin="0,1008,0,0" VerticalAlignment="Top" Click="Button_Shutdown_Click" Visibility="Hidden" Cursor="Hand" Width="234" Background="#FFF90909" BorderBrush="{x:Null}"/>
         <Button x:Name="Button_Back" Content="モード選択へ戻る" HorizontalAlignment="Left" Margin="0,977,0,0" VerticalAlignment="Top" Click="Button_Back_Click" Visibility="Hidden" Width="234" Background="#FF0056FF" BorderBrush="{x:Null}"/>
         <Image x:Name="Image_Taskbar" HorizontalAlignment="Center" Height="40" Margin="0,1040,0,0" VerticalAlignment="Top" Width="1920" Source="/taskbar.png" Visibility="Hidden"/>

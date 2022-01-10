@@ -8,6 +8,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Threading;
+using System.Threading.Tasks;
+
 namespace CStudy
 {
     /// <summary>
@@ -36,7 +38,7 @@ namespace CStudy
         private readonly DispatcherTimer timer1 = new DispatcherTimer();
         private readonly DispatcherTimer timer = new DispatcherTimer();
         private readonly Queue<string> lineQueue = new Queue<string>();
-        public void Play_Game()
+        public async void Play_Game()
         {
             /*MediaAudio.LoadedBehavior = MediaState.Manual;
             MediaAudio.Play();*/
@@ -55,9 +57,13 @@ namespace CStudy
                     ME_Boot.Source = new Uri(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\VIDEO\PCBoot.mp4");
                     Sound.Play(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\Sound_PCBoot.mp3");
                     ME_Boot.Play();
-                    
+                    await Task.Delay(15000);
+                    ME_Boot.Visibility = Visibility.Hidden;
+                    Button_Mail.Visibility = Visibility.Visible;
+                    Button_Mail2.Visibility = Visibility.Visible;
+                    Image_Taskbar.Visibility = Visibility.Visible;
+                    Button_WindowsMark.Visibility = Visibility.Visible;
                     /*
-                    Label_Boot.Visibility = Visibility.Visible;
                     string Path_File = (@"./data\story\boot.CStudy");
                     lineQueue.Clear();//表示キュークリア
                     string[] file = System.IO.File.ReadAllLines(Path_File);//ファイル読み込み
@@ -98,13 +104,13 @@ namespace CStudy
             if (lineQueue.Count > 0)
             {
                 // キューから取り出し1行表示
-                Label_Boot.Content += "\n" + lineQueue.Dequeue();
+                Label_FirstMail.Content += "\n" + lineQueue.Dequeue();
             }
             else
             {
                 // タイマー停止
                 timer1.Stop();
-                Label_Boot.Visibility = Visibility.Hidden;
+                Label_FirstMail.Visibility = Visibility.Hidden;
                 Button_Mail.Visibility = Visibility.Visible;
                 Button_Mail2.Visibility = Visibility.Visible;
                 Image_Taskbar.Visibility = Visibility.Visible;
