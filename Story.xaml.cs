@@ -28,8 +28,6 @@ namespace CStudy
         public Story()////ストーリーが選択されたら
         {
             InitializeComponent();////おまじない
-
-
             /*MediaAudio.LoadedBehavior = MediaState.Stop;
             MediaAudio.Source = new Uri(@"bgm.wmv", UriKind.Relative);*/
             Play_Game();
@@ -55,9 +53,10 @@ namespace CStudy
                     ME_Boot.Visibility=Visibility.Visible;
                     ME_Boot.LoadedBehavior = MediaState.Manual;
                     ME_Boot.Source = new Uri(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\VIDEO\PCBoot.mp4");
-                    Sound.Play(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\Sound_PCBoot.mp3");
+                    Method_PlaySound("C:\\CStudy\\music\\Sound_PCBoot.mp3");
                     ME_Boot.Play();
                     await Task.Delay(15000);
+                    Method_PlaySound("C:\\CStudy\\music\\Story.mp3");
                     ME_Boot.Visibility = Visibility.Hidden;
                     Button_Mail.Visibility = Visibility.Visible;
                     Button_Mail2.Visibility = Visibility.Visible;
@@ -88,18 +87,20 @@ namespace CStudy
                     {
                         Image_Taskbar.Visibility = Visibility.Visible;
                         Button_WindowsMark.Visibility = Visibility.Visible;
+                        Label_MailTitle.Visibility = Visibility.Visible;
                         TextBlock_MailContent.Visibility = Visibility.Visible;
                         WB_Paiza.Visibility = Visibility.Visible;
-                        TextBox_Reply.Visibility = Visibility.Visible;
-                        Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
                         Button_NextStory.Visibility = Visibility.Hidden;//次のステージボタンを不可視
-                        Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視
+                        Button_Navi_Reply.Visibility = Visibility.Visible;
+                        /*TextBox_Reply.Visibility = Visibility.Visible;*/
+                        /*Button_Reply.Visibility = Visibility.Visible;//返信ボタンを可視化
+                        Button_Retry.Visibility = Visibility.Hidden;//リトライボタンを不可視*/
                         Method_MailOpen(Global.SaveData_Num, "F");
                     }
                     break;
             }
         }
-        private void Timer1_Tick(object sender, EventArgs e)
+        /*private void Timer1_Tick(object sender, EventArgs e)
         {
             if (lineQueue.Count > 0)
             {
@@ -116,12 +117,14 @@ namespace CStudy
                 Image_Taskbar.Visibility = Visibility.Visible;
                 Button_WindowsMark.Visibility = Visibility.Visible;
             }
-        }
+        }*/
 
-        //----------------------------------------------------------------------------------------------------------------------------
+                        //----------------------------------------------------------------------------------------------------------------------------
         private void Button_Open_Mail_Click(object sender, RoutedEventArgs e)
         {
+            Method_PlaySound("C:\\CStudy\\music\\sound_click.mp3");
             TextBlock_MailContent.Visibility = Visibility.Visible;
+            Label_MailTitle.Visibility = Visibility.Visible;
             //TextBox_Reply.Visibility = Visibility.Visible;
             //Button_Reply.Visibility = Visibility.Visible;
             Method_MailOpen(Global.SaveData_Num, "F");
@@ -130,14 +133,22 @@ namespace CStudy
             //
         }
 
-        private void Button_Paiza_Download_Click(object sender, RoutedEventArgs e)
+        private async void Button_Paiza_Download_Click(object sender, RoutedEventArgs e)
         {
+            Method_PlaySound("C:\\CStudy\\music\\sound_click.mp3");
+            ME_PaizaDownLoading.Visibility = Visibility.Visible;
+            ME_PaizaDownLoading.LoadedBehavior = MediaState.Manual;
+            ME_PaizaDownLoading.Source = new Uri(@"C:\CStudy\VIDEO\Loading.mp4");
+            ME_PaizaDownLoading.Play();
+            await Task.Delay(4000);
+            ME_PaizaDownLoading.Visibility = Visibility.Hidden;
             Button_Paiza_Download.Visibility = Visibility.Hidden;
             Button_Paiza.Visibility = Visibility.Visible;
         }
 
         private void Button_Paiza_Click(object sender, RoutedEventArgs e)
         {
+            Method_PlaySound("C:\\CStudy\\music\\sound_click.mp3");
             Button_Mail.Visibility = Visibility.Hidden;
             Button_Mail2.Visibility = Visibility.Hidden;
             Button_Paiza.Visibility = Visibility.Hidden;
@@ -150,8 +161,28 @@ namespace CStudy
             //ここで返信する。
         }
         //-------------------------------------------------------------------------------------------------------------------------------
+
+        private void Button_Navi_Reply_Click(object sender,RoutedEventArgs e)
+        {
+            Label_MailTitle.Visibility = Visibility.Hidden;
+            TextBlock_MailContent.Visibility = Visibility.Hidden;
+            TextBox_Reply.Visibility = Visibility.Visible;
+            Button_Reply.Visibility = Visibility.Visible;
+            Button_Navi_Mail.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Navi_Mail_Click(object sender,RoutedEventArgs e)
+        {
+            Label_MailTitle.Visibility = Visibility.Visible;
+            TextBlock_MailContent.Visibility= Visibility.Visible;
+            TextBox_Reply.Visibility = Visibility.Hidden;
+            Button_Reply.Visibility = Visibility.Hidden;
+            Button_Navi_Mail.Visibility= Visibility.Hidden;
+        }
+
         private void Button_Reply_Click(object sender, RoutedEventArgs e)////Button_Replyがクリックされたら
         {
+            Method_PlaySound("C:\\CStudy\\music\\sound_click.mp3");
             string Path_Answer = @"./data\story\answer\" + Global.SaveData + @"\answer.CStudy";//期待される出力が保存されたPathを定義
             if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))///返信が期待された値なら
             {
@@ -172,11 +203,17 @@ namespace CStudy
 
         private void Button_Try_Click(object sender, RoutedEventArgs e)////リトライまたは次のステージボタンが押されたら
         {
+            Method_PlaySound("C:\\CStudy\\music\\sound_click.mp3");
+            TextBox_Reply.Visibility = Visibility.Hidden;
+            Button_Navi_Mail.Visibility = Visibility.Hidden;
+            Button_Reply.Visibility = Visibility.Hidden;
+            Button_Retry.Visibility= Visibility.Hidden;
             Play_Game();
         }
 
         private void WinMark_Click(object sender, RoutedEventArgs e)
         {
+            Method_PlaySound("C:\\CStudy\\music\\sound_click.mp3");
             if (Button_Shutdown.Visibility == Visibility.Visible)
             {
                 WB_Paiza.Margin = new Thickness(0, 0, 968, 40);
@@ -216,9 +253,12 @@ namespace CStudy
 
         public void Method_MailOpen(int SaveData_Num, string MailType)
         {
+            Sound.Play(@"C:\CStudy\music\Sound_Notice.mp3");
             string Path_MailData = @"./data\story\mail\" + SaveData_Num + @"\" + MailType + @".CStudy";
+            string Path_MailTitleData = @"./data\story\title\" + SaveData_Num + @".CStudy";
             Method_ReadFile(Path_MailData, "All");
             TextBlock_MailContent.Text = Method_ReadFile(Path_MailData, "All");
+            Label_MailTitle.Content = Method_ReadFile(Path_MailTitleData, "All");
         }
 
         public string Method_ReadFile(string Path_File, string How)
@@ -240,5 +280,10 @@ namespace CStudy
             return OutPut;
         }
 
+        public void Method_PlaySound(string Path)
+        {
+            Sound.Stop(Path);
+            Sound.Play(Path);
+        }
     }
 }
