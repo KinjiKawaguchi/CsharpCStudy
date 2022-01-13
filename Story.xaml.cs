@@ -52,7 +52,7 @@ namespace CStudy
                 case 0:
                     ME_Boot.Visibility=Visibility.Visible;
                     ME_Boot.LoadedBehavior = MediaState.Manual;
-                    ME_Boot.Source = new Uri(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\VIDEO\PCBoot.mp4");
+                    ME_Boot.Source = new Uri(@"C:\CStudy\VIDEO\PCBoot.mp4");
                     Method_PlaySound("C:\\CStudy\\music\\Sound_PCBoot.mp3");
                     ME_Boot.Play();
                     await Task.Delay(15000);
