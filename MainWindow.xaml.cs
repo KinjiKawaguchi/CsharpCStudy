@@ -16,13 +16,11 @@ namespace CStudy
     {
         public MainWindow()
         {
-            InitializeComponent();
-            Uri uri = new Uri("/LoginRegister.xaml", UriKind.Relative);
-            frame.Source = uri;
-            this.WindowStyle = WindowStyle.None;
-
-            // 最大化表示
-            this.WindowState = WindowState.Maximized;
+            InitializeComponent();//おまじない
+            Uri uri = new Uri("/LoginRegister.xaml", UriKind.Relative);//最初に表示するXAMLファイルのパスをUriに定義
+            frame.Source = uri;//最初に表示する
+            this.WindowStyle = WindowStyle.None;//ボーダーレスに変更
+            this.WindowState = WindowState.Maximized;//フルスクリーン
         }
 
 

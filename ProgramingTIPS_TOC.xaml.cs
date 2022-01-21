@@ -23,7 +23,5 @@ namespace CStudy
         {
             NavigationService.Navigate(new ModeSelect());//モード選択画面へ遷移
         }
-
-
     }
 }

@@ -21,7 +21,7 @@ namespace CStudy
         public LoginRegister()
         {
             InitializeComponent();//おまじない
-            Sound.Play(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\LoginRegister.mp3");
+            Sound.Play(@"C:\Users\CStudy\MUSIC\LoginRegister.mp3");
         }
 
         private void Button_Select_Click(object sender, RoutedEventArgs e)

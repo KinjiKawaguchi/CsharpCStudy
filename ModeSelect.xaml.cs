@@ -25,13 +25,13 @@ namespace CStudy
         private void Button_Navi_Story_Click(object sender, RoutedEventArgs e)////ストーリーモードが選択されたら
         {
             NavigationService.Navigate(new Story());//ストーリー画面に遷移
-            Sound.Stop(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\LoginRegister.mp3");
+            Sound.Stop(@"C:\Users\CStudy\MUSIC\LoginRegister.mp3");//BGM再生
         }
 
         private void Button_Navi_ProgramingTIPS_Click(object sender, RoutedEventArgs e)////ProgramingTIPSが選択されたら
         {
             NavigationService.Navigate(new ProgramingTIPS_TOC());//プログラミングTIPS画面に遷移
-            Sound.Stop(@"C:\Users\KAWAK\source\repos\KinjiKawaguchi\CsharpCStudy\MUSIC\LoginRegister.mp3");
+            Sound.Stop(@"C:\CStudy\MUSIC\LoginRegister.mp3");//BGM停止
         }
 
         private void Button_Navi_LoginRegister_Click(object sender, RoutedEventArgs e)////ログイン登録画面が選択されたら
