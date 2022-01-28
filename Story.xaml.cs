@@ -29,7 +29,7 @@ namespace CStudy
             Play_Game();//メソッドプレイゲームに移動
         }
 
-        private readonly Queue<string> lineQueue = new Queue<string>();
+        //private readonly Queue<string> lineQueue = new Queue<string>();
         public async void Play_Game()////メソッドPlayGame
         {
             //グローバル変数の定義--------------------------------------------------------------------------------------------------------
