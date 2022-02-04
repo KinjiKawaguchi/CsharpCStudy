@@ -17,7 +17,7 @@ namespace CStudy
     {
         public static class Global////Global変数定義
         {
-            public static string UserID = "";//Global変数定義----------------------------------------------------------------------↓
+            public static string UserID = "";//Global変数定義・初期化----------------------------------------------------------------------↓
             public static string SaveData = "";
             public static int SaveData_Num = 0;
             public static int Story_amount = 0;//---------------------------------------------------------------------------------↑
@@ -32,11 +32,11 @@ namespace CStudy
         //private readonly Queue<string> lineQueue = new Queue<string>();
         public async void Play_Game()////メソッドPlayGame
         {
-            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");//グローバル変数の内容定義------------------------------↓
-            Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");
-            Global.SaveData_Num = int.Parse(Global.SaveData);
-            string Story_amount = Method_ReadFile(@"./data\story\Number_of_Story.CStudy", "Line");
-            Global.Story_amount = int.Parse(Story_amount);//-----------------------------------------------------------------------↑
+            Global.UserID = Method_ReadFile(@"./data\NowUser.CStudy", "All");//GlobalUserIDの値をNowUserファイルに格納されているUserIDに定義
+            Global.SaveData = Method_ReadFile(@"./data\user\" + Global.UserID + @"\save.CStudy", "Line");//ログイン中のUserの保存データをSaveDataに代入
+            Global.SaveData_Num = int.Parse(Global.SaveData);//Globa.SaveDataをint型に変換しGlobal.SaveData_Numに代入
+            string Story_amount = Method_ReadFile(@"./data\story\Number_of_Story.CStudy", "Line");//現在あるストーリーの数を取得
+            Global.Story_amount = int.Parse(Story_amount);//ストーリーの数をint型に変換
             switch (Global.SaveData_Num)///Global.SaveData_Numの内容によって変更する
             {
                 case 0:///初期起動なら
@@ -51,8 +51,8 @@ namespace CStudy
                     Button_Mail.Visibility = Visibility.Visible;//StoryのGUIを表示--------------------------------------------------------↓
                     Button_Mail2.Visibility = Visibility.Visible;
                     Image_Taskbar.Visibility = Visibility.Visible;
-                    Button_WindowsMark.Visibility = Visibility.Visible;
-                    break;//-------------------------------------------------------------------------------------------------------------↑
+                    Button_WindowsMark.Visibility = Visibility.Visible;//----------------------------------------------------------------↑
+                    break;
                 default://初期起動以外なら
                     if (Global.SaveData_Num == Global.Story_amount + 1)//ストーリの数と現在のセーブデータが同じなら
                     {
@@ -100,8 +100,8 @@ namespace CStudy
 
         private void Button_Paiza_Click(object sender, RoutedEventArgs e)
         {
-            Click();
-            Button_Mail.Visibility = Visibility.Hidden;
+            Click();//クリック音を鳴らす
+            Button_Mail.Visibility = Visibility.Hidden;//
             Button_Mail2.Visibility = Visibility.Hidden;
             Button_Paiza.Visibility = Visibility.Hidden;
             string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
@@ -116,27 +116,27 @@ namespace CStudy
 
         private void Button_Navi_Reply_Click(object sender, RoutedEventArgs e)
         {
-            Label_MailTitle.Visibility = Visibility.Hidden;
+            Label_MailTitle.Visibility = Visibility.Hidden;//返信用画面のGUI表示・受信ボックスGUI非表示--------------------------------------↓
             TextBlock_MailContent.Visibility = Visibility.Hidden;
             TextBox_Reply.Visibility = Visibility.Visible;
             Button_Reply.Visibility = Visibility.Visible;
-            Button_Navi_Mail.Visibility = Visibility.Visible;
+            Button_Navi_Mail.Visibility = Visibility.Visible;//---------------------------------------------------------------------------↑
         }
 
         private void Button_Navi_Mail_Click(object sender, RoutedEventArgs e)
         {
-            Label_MailTitle.Visibility = Visibility.Visible;
+            Label_MailTitle.Visibility = Visibility.Visible;//返信用画面GUIの非表示・受信ボックスGUI表示-------------------------------------↓
             TextBlock_MailContent.Visibility = Visibility.Visible;
             TextBox_Reply.Visibility = Visibility.Hidden;
             Button_Reply.Visibility = Visibility.Hidden;
-            Button_Navi_Mail.Visibility = Visibility.Hidden;
+            Button_Navi_Mail.Visibility = Visibility.Hidden;//----------------------------------------------------------------------------↑
         }
 
         private void Button_Reply_Click(object sender, RoutedEventArgs e)////Button_Replyがクリックされたら
         {
-            Click();
+            Click();//クリック音を鳴らす
             string Path_Answer = @"./data\story\answer\" + Global.SaveData + @"\answer.CStudy";//期待される出力が保存されたPathを定義
-            if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))///返信が期待された値なら
+            if (TextBox_Reply.Text == Method_ReadFile(Path_Answer, "All"))///返信が適切な値なら
             {
                 string Path_Savedata = @"./data\user\" + Global.UserID + @"\save.CStudy";//セーブデータファイルのファイルパスを取得
                 int NextNum = Global.SaveData_Num + 1;//NextNumに今遊んでいるセーブデータ番号に1足した数を代入
@@ -156,17 +156,17 @@ namespace CStudy
         private void Button_Try_Click(object sender, RoutedEventArgs e)////リトライまたは次のステージボタンが押されたら
         {
             Click();//Click音を鳴らす
-            TextBox_Reply.Visibility = Visibility.Hidden;//----------------------------------------------------↓
+            TextBox_Reply.Visibility = Visibility.Hidden;//返信用画面GUI非表示----------------------------------------------------↓
             Button_Navi_Mail.Visibility = Visibility.Hidden;
             Button_Reply.Visibility = Visibility.Hidden;
-            Button_Retry.Visibility = Visibility.Hidden;//-----------------------------------------------------↑
+            Button_Retry.Visibility = Visibility.Hidden;//-----------------------------------------------------------------------↑
             Play_Game();//Play_Gameメソッドに移動
         }
 
         private void WinMark_Click(object sender, RoutedEventArgs e)////Windowsマークがクリックされたら
         {
             Click();//クリック音を鳴らす
-            if (Button_Shutdown.Visibility == Visibility.Visible)///ャットダウンボタンが可視なら
+            if (Button_Shutdown.Visibility == Visibility.Visible)///シャットダウンボタンが可視なら
             {
                 WB_Paiza.Margin = new Thickness(0, 0, 968, 40);//Paizaの表示領域を広げる
                 Button_Shutdown.Visibility = Visibility.Hidden;//シャットダウンボタンを隠す
